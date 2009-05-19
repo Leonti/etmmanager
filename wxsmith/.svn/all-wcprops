@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith
+END
+db_set_panel.wxs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith/db_set_panel.wxs
+END
+settings.wxs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith/settings.wxs
+END
+prog_set_panel.wxs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith/prog_set_panel.wxs
+END
+edit_time.wxs
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith/edit_time.wxs
+END
+about.wxs
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith/about.wxs
+END
+etmmanagerframe.wxs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith/etmmanagerframe.wxs
+END
+workers.wxs
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/wxsmith/workers.wxs
+END

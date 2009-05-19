@@ -1,0 +1,74 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.0
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 02, 2008 at 07:27 PM
+-- Server version: 5.0.45
+-- PHP Version: 5.2.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `time_management`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees`
+--
+
+DROP TABLE IF EXISTS `employees`;
+CREATE TABLE IF NOT EXISTS `employees` (
+  `emp_id` int(11) NOT NULL auto_increment,
+  `emp_name` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `emp_ssn` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `emp_comment` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`emp_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_jobs`
+--
+
+DROP TABLE IF EXISTS `emp_jobs`;
+CREATE TABLE IF NOT EXISTS `emp_jobs` (
+  `id` int(11) NOT NULL auto_increment,
+  `emp_id` int(11) NOT NULL,
+  `job_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `job_id` int(11) NOT NULL auto_increment,
+  `job_title` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `job_wage` double NOT NULL,
+  `job_description` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`job_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `time`
+--
+
+DROP TABLE IF EXISTS `time`;
+CREATE TABLE IF NOT EXISTS `time` (
+  `time_id` int(11) NOT NULL auto_increment,
+  `time_emp_id` int(11) NOT NULL,
+  `time_time` datetime NOT NULL,
+  `time_job_id` int(11) NOT NULL,
+  `time_edited` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`time_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=273 ;

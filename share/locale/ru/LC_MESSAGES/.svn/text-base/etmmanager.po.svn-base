@@ -1,0 +1,425 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-04-27 21:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: about.cpp:55
+msgid "ETM manager about"
+msgstr ""
+
+#: about.cpp:63
+msgid "Created and programmed by:"
+msgstr ""
+
+#: about.cpp:77
+msgid "Using:"
+msgstr ""
+
+#: about.cpp:85
+msgid "GNU GPL v2 license"
+msgstr ""
+
+#: about.cpp:89 workers.cpp:160
+msgid "Close"
+msgstr ""
+
+#: db_set_panel.cpp:54
+msgid "Please edit this setting before connecting to the database."
+msgstr ""
+
+#: db_set_panel.cpp:57
+msgid "Host"
+msgstr ""
+
+#: db_set_panel.cpp:61
+msgid "User"
+msgstr ""
+
+#: db_set_panel.cpp:65
+msgid "Password"
+msgstr ""
+
+#: db_set_panel.cpp:69
+msgid "Database name"
+msgstr ""
+
+#: db_set_panel.cpp:74
+msgid "Create database"
+msgstr ""
+
+#: db_set_panel.cpp:77
+msgid "Show this dialog on next startup"
+msgstr ""
+
+#: db_set_panel.cpp:133
+msgid "Database was created, but the structure was not restored."
+msgstr ""
+
+#: edit_time.cpp:47
+msgid "Edit time entries"
+msgstr ""
+
+#: edit_time.cpp:57 workers.cpp:101 workers.cpp:148
+msgid "Add"
+msgstr ""
+
+#: edit_time.cpp:59 workers.cpp:108 workers.cpp:155
+msgid "Delete"
+msgstr ""
+
+#: edit_time.cpp:63 settings.cpp:52
+msgid "Save"
+msgstr ""
+
+#: edit_time.cpp:65 settings.cpp:54
+msgid "Cancel"
+msgstr ""
+
+#: edit_time.cpp:79
+msgid "Time"
+msgstr ""
+
+#: edit_time.cpp:80 etmmanagerMain.cpp:215
+msgid "Job"
+msgstr ""
+
+#: edit_time.cpp:117 etmmanagerMain.cpp:686
+msgid "OFF"
+msgstr ""
+
+#: etmmanagerMain.cpp:120
+msgid "Beginning date"
+msgstr ""
+
+#: etmmanagerMain.cpp:123
+msgid "Ending date"
+msgstr ""
+
+#: etmmanagerMain.cpp:125
+msgid "Get info"
+msgstr ""
+
+#: etmmanagerMain.cpp:126
+msgid ""
+"Get time and job information for selected employee in a selected period of "
+"time"
+msgstr ""
+
+#: etmmanagerMain.cpp:130
+msgid "Select an employee"
+msgstr ""
+
+#: etmmanagerMain.cpp:133 workers.cpp:87
+msgid "Name:"
+msgstr "Imia"
+
+#: etmmanagerMain.cpp:134 workers.cpp:91
+msgid "Code:"
+msgstr ""
+
+#: etmmanagerMain.cpp:135 workers.cpp:97 workers.cpp:144
+msgid "Comment:"
+msgstr ""
+
+#: etmmanagerMain.cpp:136
+msgid "Jobs:"
+msgstr ""
+
+#: etmmanagerMain.cpp:146
+msgid "Totals for hours and payment"
+msgstr ""
+
+#: etmmanagerMain.cpp:152
+msgid "Double click on a date to change hours"
+msgstr ""
+
+#: etmmanagerMain.cpp:158
+msgid "Make backup"
+msgstr ""
+
+#: etmmanagerMain.cpp:160
+msgid "Restore from backup"
+msgstr ""
+
+#: etmmanagerMain.cpp:162
+msgid "Install structure"
+msgstr ""
+
+#: etmmanagerMain.cpp:165
+msgid "Quit\tAlt-F4"
+msgstr ""
+
+#: etmmanagerMain.cpp:165
+msgid "Quit the application"
+msgstr ""
+
+#: etmmanagerMain.cpp:167
+msgid "&File"
+msgstr ""
+
+#: etmmanagerMain.cpp:169 workers.cpp:79
+msgid "Employees"
+msgstr ""
+
+#: etmmanagerMain.cpp:169
+msgid "Edit list of employees and jobs assigned to them"
+msgstr ""
+
+#: etmmanagerMain.cpp:171
+msgid "Edit"
+msgstr ""
+
+#: etmmanagerMain.cpp:173
+msgid "General"
+msgstr ""
+
+#: etmmanagerMain.cpp:173
+msgid "Edit database and program settings"
+msgstr ""
+
+#: etmmanagerMain.cpp:175 settings.cpp:44
+msgid "Settings"
+msgstr ""
+
+#: etmmanagerMain.cpp:177
+msgid "About\tF1"
+msgstr ""
+
+#: etmmanagerMain.cpp:177
+msgid "Show info about this application"
+msgstr ""
+
+#: etmmanagerMain.cpp:179
+msgid "Help"
+msgstr ""
+
+#: etmmanagerMain.cpp:213
+msgid "Time In"
+msgstr ""
+
+#: etmmanagerMain.cpp:214
+msgid "Time Out"
+msgstr ""
+
+#: etmmanagerMain.cpp:216
+msgid "Duration"
+msgstr ""
+
+#: etmmanagerMain.cpp:217
+msgid "Wage"
+msgstr ""
+
+#: etmmanagerMain.cpp:218
+msgid "To pay"
+msgstr ""
+
+#: etmmanagerMain.cpp:229
+msgid "Hours"
+msgstr ""
+
+#: etmmanagerMain.cpp:230
+msgid "Earned"
+msgstr ""
+
+#: etmmanagerMain.cpp:231
+msgid "Regular Time:"
+msgstr ""
+
+#: etmmanagerMain.cpp:232
+msgid "Overtime:"
+msgstr ""
+
+#: etmmanagerMain.cpp:233
+msgid "Total Time:"
+msgstr ""
+
+#: etmmanagerMain.cpp:296
+msgid "Connected to database '"
+msgstr ""
+
+#: etmmanagerMain.cpp:296 etmmanagerMain.cpp:302
+msgid "' on "
+msgstr ""
+
+#: etmmanagerMain.cpp:302
+msgid "Unable no connect to database '"
+msgstr ""
+
+#: etmmanagerMain.cpp:304
+msgid "Unable to connect to the database. Reason:\n"
+msgstr ""
+
+#: etmmanagerMain.cpp:304
+msgid "Not connected."
+msgstr ""
+
+#: etmmanagerMain.cpp:726
+msgid "no entry"
+msgstr ""
+
+#: etmmanagerMain.cpp:781 etmmanagerMain.cpp:797
+msgid "Select file"
+msgstr ""
+
+#: etmmanagerMain.cpp:786
+msgid "There was a problem. Backup is not done."
+msgstr ""
+
+#: etmmanagerMain.cpp:789 etmmanagerMain.cpp:806 etmmanagerMain.cpp:821
+msgid "You are not connected to the database!"
+msgstr ""
+
+#: etmmanagerMain.cpp:802
+msgid "There was a problem. Data is not restored."
+msgstr ""
+
+#: etmmanagerMain.cpp:818
+msgid "There was a problem. Database structure is not installed"
+msgstr ""
+
+#: prog_set_panel.cpp:58
+msgid "Time settings"
+msgstr ""
+
+#: prog_set_panel.cpp:60
+msgid "New payweek starts from:"
+msgstr ""
+
+#: prog_set_panel.cpp:64
+msgid "Overtime limit week hours:"
+msgstr ""
+
+#: prog_set_panel.cpp:68
+msgid "Overtime limit day hours:"
+msgstr ""
+
+#: prog_set_panel.cpp:72
+msgid "Overtime wage multiplier"
+msgstr ""
+
+#: prog_set_panel.cpp:78
+msgid "Appearance"
+msgstr ""
+
+#: prog_set_panel.cpp:85
+msgid "Spanish"
+msgstr ""
+
+#: prog_set_panel.cpp:86
+msgid "Polish"
+msgstr ""
+
+#: prog_set_panel.cpp:87
+msgid "Russian"
+msgstr ""
+
+#: prog_set_panel.cpp:90
+msgid ""
+"You need to restart program for language \n"
+"settings to take effect!"
+msgstr ""
+
+#: settings.cpp:83
+msgid "Database"
+msgstr ""
+
+#: settings.cpp:89
+msgid "Program settings"
+msgstr ""
+
+#: workers.cpp:76
+msgid "Employees and jobs editing"
+msgstr ""
+
+#: workers.cpp:95
+msgid "Only numeric values (4 digits) are alowed"
+msgstr ""
+
+#: workers.cpp:102
+msgid "Add new employee to the list"
+msgstr ""
+
+#: workers.cpp:104 workers.cpp:151
+msgid "Change"
+msgstr ""
+
+#: workers.cpp:105
+msgid "Change employee info"
+msgstr ""
+
+#: workers.cpp:109
+msgid "Delete selected employee from the list"
+msgstr ""
+
+#: workers.cpp:114
+msgid "Employee's list of jobs:"
+msgstr ""
+
+#: workers.cpp:119
+msgid "Remove"
+msgstr ""
+
+#: workers.cpp:121
+msgid "Remove selected job from the list of jobs assigned to an employee"
+msgstr ""
+
+#: workers.cpp:125
+msgid "<--"
+msgstr ""
+
+#: workers.cpp:127
+msgid "Press this button to assign a job to an employee"
+msgstr ""
+
+#: workers.cpp:130
+msgid "Jobs"
+msgstr ""
+
+#: workers.cpp:135
+msgid "Job title:"
+msgstr ""
+
+#: workers.cpp:139
+msgid "Wage:"
+msgstr ""
+
+#: workers.cpp:142
+msgid "Enter job wage here"
+msgstr ""
+
+#: workers.cpp:149
+msgid "Add new job to the list"
+msgstr ""
+
+#: workers.cpp:152
+msgid "Change job info"
+msgstr ""
+
+#: workers.cpp:156
+msgid "Delete a job from the list"
+msgstr ""
+
+#: workers.cpp:161
+msgid "Close this window"
+msgstr ""
+
+#: workers.cpp:275
+msgid "This worker already exists."
+msgstr ""
+
+#: workers.cpp:372
+msgid "This job already exists."
+msgstr ""

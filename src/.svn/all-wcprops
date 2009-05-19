@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src
+END
+settings.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/settings.cpp
+END
+workers.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/workers.h
+END
+prog_set_panel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/prog_set_panel.cpp
+END
+edit_time.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/edit_time.cpp
+END
+messages.po
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/messages.po
+END
+settings.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/settings.h
+END
+backup.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/backup.cpp
+END
+prog_set_panel.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/prog_set_panel.h
+END
+wx_std.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/wx_std.cpp
+END
+edit_time.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/edit_time.h
+END
+about.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/about.cpp
+END
+backup.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/backup.h
+END
+etmmanager.po
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/etmmanager.po
+END
+wx_std.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/wx_std.h
+END
+about.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/about.h
+END
+db_set_panel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/db_set_panel.cpp
+END
+etmmanagerApp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/etmmanagerApp.cpp
+END
+db_set_panel.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/db_set_panel.h
+END
+etmmanagerMain.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/etmmanagerMain.cpp
+END
+etmmanagerApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/etmmanagerApp.h
+END
+round.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/round.cpp
+END
+etmmanagerMain.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/etmmanagerMain.h
+END
+version.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/version.h
+END
+round.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/round.h
+END
+workers.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/etm/!svn/ver/1/etmmanager/trunk/src/workers.cpp
+END

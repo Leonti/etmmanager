@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="etmmanager" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/etmmanager" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/etmmanager" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="`wx-config --cflags`" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --libs`" />
+		</Linker>
+		<Unit filename="src/contracts.cpp" />
+		<Unit filename="src/contracts.h" />
+		<Unit filename="src/about.cpp" />
+		<Unit filename="src/about.h" />
+		<Unit filename="src/backup.cpp" />
+		<Unit filename="src/backup.h" />
+		<Unit filename="src/db_set_panel.cpp" />
+		<Unit filename="src/db_set_panel.h" />
+		<Unit filename="src/edit_time.cpp" />
+		<Unit filename="src/edit_time.h" />
+		<Unit filename="src/etmmanagerApp.cpp" />
+		<Unit filename="src/etmmanagerApp.h" />
+		<Unit filename="src/etmmanagerMain.cpp" />
+		<Unit filename="src/etmmanagerMain.h" />
+		<Unit filename="src/prog_set_panel.cpp" />
+		<Unit filename="src/prog_set_panel.h" />
+		<Unit filename="src/prog_set_panel_adv.cpp" />
+		<Unit filename="src/prog_set_panel_adv.h" />
+		<Unit filename="src/round.cpp" />
+		<Unit filename="src/round.h" />
+		<Unit filename="src/settings.cpp" />
+		<Unit filename="src/settings.h" />
+		<Unit filename="src/version.h" />
+		<Unit filename="src/workers.cpp" />
+		<Unit filename="src/workers.h" />
+		<Unit filename="src/wx_std.cpp" />
+		<Unit filename="src/wx_std.h" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="src/etmmanagerApp.cpp" main="etmmanagerFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/etmmanagerframe.wxs" src="src/etmmanagerMain.cpp" hdr="src/etmmanagerMain.h" name="etmmanagerFrame" language="CPP" />
+					<wxDialog wxs="wxsmith/settings.wxs" src="src/settings.cpp" hdr="src/settings.h" name="settings" language="CPP" />
+					<wxPanel wxs="wxsmith/prog_set_panel.wxs" src="src/prog_set_panel.cpp" hdr="src/prog_set_panel.h" name="prog_set_panel" language="CPP" />
+					<wxPanel wxs="wxsmith/db_set_panel.wxs" src="src/db_set_panel.cpp" hdr="src/db_set_panel.h" name="db_set_panel" language="CPP" />
+					<wxDialog wxs="wxsmith/workers.wxs" src="src/workers.cpp" hdr="src/workers.h" name="workers" language="CPP" />
+					<wxDialog wxs="wxsmith/edit_time.wxs" src="src/edit_time.cpp" hdr="src/edit_time.h" name="edit_time" language="CPP" />
+					<wxDialog wxs="wxsmith/about.wxs" src="src/about.cpp" hdr="src/about.h" name="about" language="CPP" />
+					<wxPanel wxs="wxsmith/prog_set_panel_adv.wxs" src="src/prog_set_panel_adv.cpp" hdr="src/prog_set_panel_adv.h" name="prog_set_panel_adv" language="CPP" />
+					<wxDialog wxs="wxsmith/contracts.wxs" src="src/contracts.cpp" hdr="src/contracts.h" name="contracts" language="CPP" />
+				</resources>
+			</wxsmith>
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="src/version.h" />
+				<Changes_Log show_changes_editor="1" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+			</AutoVersioning>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,503 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-04-27 21:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: about.cpp:55
+msgid "ETM manager about"
+msgstr "О ETM manager"
+
+#: about.cpp:63
+msgid "Created and programmed by:"
+msgstr "Програму написал:"
+
+#: about.cpp:77
+msgid "Using:"
+msgstr "Используя:"
+
+#: about.cpp:85
+msgid "GNU GPL v2 license"
+msgstr "Лицензия GNU GPL v2"
+
+#: about.cpp:89 workers.cpp:160
+msgid "Close"
+msgstr "Закрыть"
+
+#: db_set_panel.cpp:54
+msgid "Please edit this setting before connecting to the database."
+msgstr "Необходимо отредактировать эти установки перед подключением к базе данных."
+
+#: db_set_panel.cpp:57
+msgid "Host"
+msgstr "Хост"
+
+#: db_set_panel.cpp:61
+msgid "User"
+msgstr "Пользователь"
+
+#: db_set_panel.cpp:65
+msgid "Password"
+msgstr "Пароль"
+
+#: db_set_panel.cpp:69
+msgid "Database name"
+msgstr "Имя базы данных"
+
+#: db_set_panel.cpp:74
+msgid "Create database"
+msgstr "Создать базу данных"
+
+#: db_set_panel.cpp:77
+msgid "Show this dialog on next startup"
+msgstr "Показать это окно при следующем запуске"
+
+#: db_set_panel.cpp:133
+msgid "Database was created, but the structure was not restored."
+msgstr "База данных была создана, но её структура не была заимпортирована."
+
+#: edit_time.cpp:47
+msgid "Edit time entries"
+msgstr "Изменить записи"
+
+#: edit_time.cpp:57 workers.cpp:101 workers.cpp:148
+msgid "Add"
+msgstr "Добавить"
+
+#: edit_time.cpp:59 workers.cpp:108 workers.cpp:155
+msgid "Delete"
+msgstr "Удалить"
+
+#: edit_time.cpp:63 settings.cpp:52
+msgid "Save"
+msgstr "Сохранить"
+
+#: edit_time.cpp:65 settings.cpp:54
+msgid "Cancel"
+msgstr "Отмена"
+
+#: edit_time.cpp:79
+msgid "Time"
+msgstr "Время"
+
+#: edit_time.cpp:80 etmmanagerMain.cpp:215
+msgid "Job"
+msgstr "Позиция"
+
+#: edit_time.cpp:117 etmmanagerMain.cpp:686
+msgid "OFF"
+msgstr "ОТДЫХ"
+
+#: etmmanagerMain.cpp:120
+msgid "Beginning date"
+msgstr "Начало периода"
+
+#: etmmanagerMain.cpp:123
+msgid "Ending date"
+msgstr "Конец периода"
+
+#: etmmanagerMain.cpp:125
+msgid "Get info"
+msgstr "Показать"
+
+#: etmmanagerMain.cpp:126
+msgid ""
+"Get time and job information for selected employee in a selected period of "
+"time"
+msgstr "Показать инфорацию для выбранного работника и для выбранного периода"
+
+#: etmmanagerMain.cpp:130
+msgid "Select an employee"
+msgstr "Выбрать работника"
+
+#: etmmanagerMain.cpp:133 workers.cpp:87
+msgid "Name:"
+msgstr "Имя"
+
+#: etmmanagerMain.cpp:134 workers.cpp:91
+msgid "Code:"
+msgstr "Код"
+
+#: etmmanagerMain.cpp:135 workers.cpp:97 workers.cpp:144
+msgid "Comment:"
+msgstr "Комментарий"
+
+#: etmmanagerMain.cpp:136
+msgid "Jobs:"
+msgstr "Позиции:"
+
+#: etmmanagerMain.cpp:146
+msgid "Totals for hours and payment"
+msgstr "Сумма времени и выплат"
+
+#: etmmanagerMain.cpp:152
+msgid "Double click on a date to change hours"
+msgstr "Двойной щелчок на дате для изменения часовых записей"
+
+#: etmmanagerMain.cpp:158
+msgid "Make backup"
+msgstr "Резервная копия"
+
+#: etmmanagerMain.cpp:160
+msgid "Restore from backup"
+msgstr "Восстановить из копии"
+
+#: etmmanagerMain.cpp:162
+msgid "Install structure"
+msgstr "Импортировать структуру"
+
+#: etmmanagerMain.cpp:165
+msgid "Quit\tAlt-F4"
+msgstr "Выход\tAlt-F4"
+
+#: etmmanagerMain.cpp:165
+msgid "Quit the application"
+msgstr "Выход из программы"
+
+#: etmmanagerMain.cpp:167
+msgid "&File"
+msgstr "&Файл"
+
+#: etmmanagerMain.cpp:169 workers.cpp:79
+msgid "Employees"
+msgstr "Работники"
+
+#: etmmanagerMain.cpp:169
+msgid "Edit list of employees and jobs assigned to them"
+msgstr "Изменить список работников и позиций"
+
+#: etmmanagerMain.cpp:171
+msgid "Edit"
+msgstr "Изменить"
+
+#: etmmanagerMain.cpp:173
+msgid "General"
+msgstr "Общее"
+
+#: etmmanagerMain.cpp:173
+msgid "Edit database and program settings"
+msgstr "Изменить настройки базы данных и програмы"
+
+#: etmmanagerMain.cpp:175 settings.cpp:44
+msgid "Settings"
+msgstr "Настройки"
+
+#: etmmanagerMain.cpp:177
+msgid "About\tF1"
+msgstr "О программе\tF1"
+
+#: etmmanagerMain.cpp:177
+msgid "Show info about this application"
+msgstr "Показать информацию о программе"
+
+#: etmmanagerMain.cpp:179
+msgid "Help"
+msgstr "Помощь"
+
+#: etmmanagerMain.cpp:213
+msgid "Time In"
+msgstr "Вход"
+
+#: etmmanagerMain.cpp:214
+msgid "Time Out"
+msgstr "Выход"
+
+#: etmmanagerMain.cpp:216
+msgid "Duration"
+msgstr "Длительность"
+
+#: etmmanagerMain.cpp:217
+msgid "Wage"
+msgstr "Оплата"
+
+#: etmmanagerMain.cpp:218
+msgid "To pay"
+msgstr "Заплатить"
+
+#: etmmanagerMain.cpp:229
+msgid "Hours"
+msgstr "Часы"
+
+#: etmmanagerMain.cpp:230
+msgid "Earned"
+msgstr "Заработано"
+
+#: etmmanagerMain.cpp:231
+msgid "Regular Time:"
+msgstr "Обычное время:"
+
+#: etmmanagerMain.cpp:232
+msgid "Overtime:"
+msgstr "Сверхурочные:"
+
+#: etmmanagerMain.cpp:233
+msgid "Total Time:"
+msgstr "Всё время:"
+
+#: etmmanagerMain.cpp:296
+msgid "Connected to database '"
+msgstr "Подключены к базе данных '"
+
+#: etmmanagerMain.cpp:296 etmmanagerMain.cpp:302
+msgid "' on "
+msgstr "' на "
+
+#: etmmanagerMain.cpp:302
+msgid "Unable no connect to database '"
+msgstr "Невозможно подключиться к базе данных '"
+
+#: etmmanagerMain.cpp:304
+msgid "Unable to connect to the database. Reason:\n"
+msgstr "Невозможно подключиться к базе данных. Причина:\n"
+
+#: etmmanagerMain.cpp:304
+msgid "Not connected."
+msgstr "Не подключены."
+
+#: etmmanagerMain.cpp:726
+msgid "no entry"
+msgstr "нет записей"
+
+#: etmmanagerMain.cpp:781 etmmanagerMain.cpp:797
+msgid "Select file"
+msgstr "Выберите файл"
+
+#: etmmanagerMain.cpp:786
+msgid "There was a problem. Backup is not done."
+msgstr "Возникла проблема. Резервная копия не была создана."
+
+#: etmmanagerMain.cpp:789 etmmanagerMain.cpp:806 etmmanagerMain.cpp:821
+msgid "You are not connected to the database!"
+msgstr "Вы не подключены к базе данных!"
+
+#: etmmanagerMain.cpp:802
+msgid "There was a problem. Data is not restored."
+msgstr "Возникла проблема. Данные не были восстановлены."
+
+#: etmmanagerMain.cpp:818
+msgid "There was a problem. Database structure is not installed"
+msgstr "Возникла проблема. Структура базы данных не была создана."
+
+#: prog_set_panel.cpp:58
+msgid "Time settings"
+msgstr "Настройки времени"
+
+#: prog_set_panel.cpp:60
+msgid "New payweek starts from:"
+msgstr "Новая неделя начинается от:"
+
+#: prog_set_panel.cpp:64
+msgid "Overtime limit week hours:"
+msgstr "Недельный лимит обычного времени:"
+
+#: prog_set_panel.cpp:68
+msgid "Overtime limit day hours:"
+msgstr "Дневной лимит обычного времени:"
+
+#: prog_set_panel.cpp:72
+msgid "Overtime wage multiplier"
+msgstr "Умножтель оплаты за сверхурочные"
+
+#: prog_set_panel.cpp:78
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: prog_set_panel.cpp:85
+msgid "Spanish"
+msgstr "Испанский"
+
+#: prog_set_panel.cpp:86
+msgid "Polish"
+msgstr "Польский"
+
+#: prog_set_panel.cpp:87
+msgid "Russian"
+msgstr "Русский"
+
+#: prog_set_panel.cpp:90
+msgid ""
+"You need to restart program for language \n"
+"settings to take effect!"
+msgstr "Необходимо перезапустить программу,\n чтобы настройки языка вошли в силу!"
+
+#: settings.cpp:83
+msgid "Database"
+msgstr "База данных"
+
+#: settings.cpp:89
+msgid "Program settings"
+msgstr "Настройки програмы"
+
+#: workers.cpp:76
+msgid "Employees and jobs editing"
+msgstr "Редакция списка работников и позиций"
+
+#: workers.cpp:95
+msgid "Only numeric values (4 digits) are alowed"
+msgstr "Допускаются только цифровые значения (макс. 4 цифры)."
+
+#: workers.cpp:102
+msgid "Add new employee to the list"
+msgstr "Добавить нового работника к списку"
+
+#: workers.cpp:104 workers.cpp:151
+msgid "Change"
+msgstr "Изменить"
+
+#: workers.cpp:105
+msgid "Change employee info"
+msgstr "Изменить информацию о работнике"
+
+#: workers.cpp:109
+msgid "Delete selected employee from the list"
+msgstr "Удалить выбранного работника из списка"
+
+#: workers.cpp:114
+msgid "Employee's list of jobs:"
+msgstr "Список позиций работника:"
+
+#: workers.cpp:119
+msgid "Remove"
+msgstr "Удалить"
+
+#: workers.cpp:121
+msgid "Remove selected job from the list of jobs assigned to an employee"
+msgstr "Удалить выбранную позицию из списка позиций для выбранного работника"
+
+#: workers.cpp:125
+msgid "<--"
+msgstr ""
+
+#: workers.cpp:127
+msgid "Press this button to assign a job to an employee"
+msgstr "Нажмите кнопку, чтобы добавить позицию к работнику"
+
+#: workers.cpp:130
+msgid "Jobs"
+msgstr "Позиции"
+
+#: workers.cpp:135
+msgid "Job title:"
+msgstr "Название:"
+
+#: workers.cpp:139
+msgid "Wage:"
+msgstr "Оплата:"
+
+#: workers.cpp:142
+msgid "Enter job wage here"
+msgstr "Введите сумму оплаты за час"
+
+#: workers.cpp:149
+msgid "Add new job to the list"
+msgstr "Добавить новую позицию к списку"
+
+#: workers.cpp:152
+msgid "Change job info"
+msgstr "Изменить информацию о позиции"
+
+#: workers.cpp:156
+msgid "Delete a job from the list"
+msgstr "Удалить позицию из списка"
+
+#: workers.cpp:161
+msgid "Close this window"
+msgstr "Закрыть это окно"
+
+#: workers.cpp:275
+msgid "This worker already exists."
+msgstr "Этот работник уже в списке."
+
+#: workers.cpp:372
+msgid "This job already exists."
+msgstr "Эта позиция уже в списке."
+
+#: contracts.cpp:39 workers.cpp:109
+msgid "Overtime settings"
+msgstr "Установки сверхурочных"
+
+#: contracts.cpp:41
+msgid "Set and edit overtime limits settings"
+msgstr "Установка и редактирование лимитов сверхурочных"
+
+#: contracts.cpp:65
+msgid "Default"
+msgstr "По умолчанию"
+
+#: contracts.cpp:214
+msgid ""
+"You can't delete default settings! Please set another settings as default "
+"before deleting!"
+msgstr "Вы не можете удалить установки по умолчанию! Пожалуйста установите другие установки по умолчанию прежде чем удалять эти!"
+
+#: etmmanagerMain.cpp:162
+msgid "Overtime limits:"
+msgstr "Пороги сверхурочных:"
+
+#: etmmanagerMain.cpp:167
+msgid "Week starts from:"
+msgstr "Неделя начинается с:"
+
+#: etmmanagerMain.cpp:171
+msgid "Day limit:"
+msgstr "Дневной порог:"
+
+#: etmmanagerMain.cpp:175
+msgid "Week limit:"
+msgstr "Недельный порог:"
+
+#: etmmanagerMain.cpp:179
+msgid "Overtime multiplier:"
+msgstr "Множитель оплаты за сверхурочные:"
+
+#: etmmanagerMain.cpp:215
+msgid "Overtime limits"
+msgstr "Пороги сверхурочных"
+
+#: etmmanagerMain.cpp:952
+msgid "Database was updated!"
+msgstr "База данных обновлена!"
+
+#: prog_set_panel_adv.cpp:48
+msgid "File pathes:"
+msgstr "Пути файлов:"
+
+#: prog_set_panel_adv.cpp:50
+msgid "Use own path to Mysql bin directory"
+msgstr "Используется собственный путь для папки bin MySQL"
+
+#: prog_set_panel_adv.cpp:54
+msgid "MySQL bin directory path:"
+msgstr "Путь к папке bin MySQL:"
+
+#: prog_set_panel_adv.cpp:56
+msgid "Select a folder"
+msgstr "Выберите папку"
+
+#: prog_set_panel.cpp:58
+msgid "Portuguese"
+msgstr "Португальский"
+
+#: settings.cpp:95
+msgid "Advanced settings"
+msgstr "Продвинутые установки"
+
+#: about.cpp:122
+msgid "Main"
+msgstr "Главное"
+
+#: about.cpp:123
+msgid "Translations"
+msgstr "Переводы"

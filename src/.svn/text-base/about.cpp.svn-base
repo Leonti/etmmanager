@@ -1,0 +1,109 @@
+/*************************************************************************************
+*  ETM Manager - works with the time data from the Mysql database. Part of           *
+*  ETM (Employee Time Management) project.                                           *
+*  Copyright (C) 2008  Leonti Bielski                                                *
+*                                                                                    *
+*  This program is free software; you can redistribute it and/or modify              *
+*  it under the terms of the GNU General Public License as published by              *
+*  the Free Software Foundation; either version 2 of the License, or                 *
+*  (at your option) any later version.                                               *
+*                                                                                    *
+*  This program is distributed in the hope that it will be useful,                   *
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of                    *
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     *
+*  GNU General Public License for more details.                                      *
+*                                                                                    *
+*  You should have received a copy of the GNU General Public License                 *
+*  along with this program; if not, write to the Free Software                       *
+*  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA    *
+*************************************************************************************/
+#include "about.h"
+
+//(*InternalHeaders(about)
+#include <wx/string.h>
+#include <wx/intl.h>
+#include <wx/font.h>
+//*)
+
+//(*IdInit(about)
+const long about::ID_STATICTEXT1 = wxNewId();
+const long about::ID_STATICTEXT2 = wxNewId();
+const long about::ID_STATICLINE3 = wxNewId();
+const long about::ID_STATICTEXT3 = wxNewId();
+const long about::ID_STATICTEXT8 = wxNewId();
+const long about::ID_STATICTEXT9 = wxNewId();
+const long about::ID_STATICLINE4 = wxNewId();
+const long about::ID_STATICTEXT4 = wxNewId();
+const long about::ID_STATICTEXT5 = wxNewId();
+const long about::ID_STATICTEXT6 = wxNewId();
+const long about::ID_STATICLINE1 = wxNewId();
+const long about::ID_STATICTEXT7 = wxNewId();
+const long about::ID_STATICLINE2 = wxNewId();
+const long about::ID_BUTTON1 = wxNewId();
+//*)
+
+BEGIN_EVENT_TABLE(about,wxDialog)
+	//(*EventTable(about)
+	//*)
+END_EVENT_TABLE()
+
+about::about(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size)
+{
+	//(*Initialize(about)
+	wxFlexGridSizer* FlexGridSizer1;
+
+	Create(parent, id, _("ETM manager about"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("id"));
+	SetClientSize(wxDefaultSize);
+	Move(wxDefaultPosition);
+	FlexGridSizer1 = new wxFlexGridSizer(10, 1, 0, 0);
+	StaticText1 = new wxStaticText(this, ID_STATICTEXT1, _("ETM manager"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
+	wxFont StaticText1Font(20,wxSWISS,wxFONTSTYLE_NORMAL,wxNORMAL,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+	StaticText1->SetFont(StaticText1Font);
+	FlexGridSizer1->Add(StaticText1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText2 = new wxStaticText(this, ID_STATICTEXT2, _("Created and programmed by:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT2"));
+	FlexGridSizer1->Add(StaticText2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticLine3 = new wxStaticLine(this, ID_STATICLINE3, wxDefaultPosition, wxSize(10,-1), wxLI_HORIZONTAL, _T("ID_STATICLINE3"));
+	FlexGridSizer1->Add(StaticLine3, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText3 = new wxStaticText(this, ID_STATICTEXT3, _("Leonti Bielski"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT3"));
+	wxFont StaticText3Font(13,wxSWISS,wxFONTSTYLE_NORMAL,wxNORMAL,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+	StaticText3->SetFont(StaticText3Font);
+	FlexGridSizer1->Add(StaticText3, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText8 = new wxStaticText(this, ID_STATICTEXT8, _("http://etm.leonti.ru"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT8"));
+	FlexGridSizer1->Add(StaticText8, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText9 = new wxStaticText(this, ID_STATICTEXT9, _("prishelec@gmail.com"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT9"));
+	FlexGridSizer1->Add(StaticText9, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticLine4 = new wxStaticLine(this, ID_STATICLINE4, wxDefaultPosition, wxSize(10,-1), wxLI_HORIZONTAL, _T("ID_STATICLINE4"));
+	FlexGridSizer1->Add(StaticLine4, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText4 = new wxStaticText(this, ID_STATICTEXT4, _("Using:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT4"));
+	FlexGridSizer1->Add(StaticText4, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText5 = new wxStaticText(this, ID_STATICTEXT5, _("wxWidgets 2.8"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT5"));
+	FlexGridSizer1->Add(StaticText5, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText6 = new wxStaticText(this, ID_STATICTEXT6, _("MySQL++ library"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT6"));
+	FlexGridSizer1->Add(StaticText6, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticLine1 = new wxStaticLine(this, ID_STATICLINE1, wxDefaultPosition, wxSize(10,-1), wxLI_HORIZONTAL, _T("ID_STATICLINE1"));
+	FlexGridSizer1->Add(StaticLine1, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticText7 = new wxStaticText(this, ID_STATICTEXT7, _("GNU GPL v2 license"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT7"));
+	FlexGridSizer1->Add(StaticText7, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	StaticLine2 = new wxStaticLine(this, ID_STATICLINE2, wxDefaultPosition, wxSize(10,-1), wxLI_HORIZONTAL, _T("ID_STATICLINE2"));
+	FlexGridSizer1->Add(StaticLine2, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	Button1 = new wxButton(this, ID_BUTTON1, _("Close"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
+	FlexGridSizer1->Add(Button1, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
+	SetSizer(FlexGridSizer1);
+	FlexGridSizer1->Fit(this);
+	FlexGridSizer1->SetSizeHints(this);
+
+	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&about::OnButton1Click);
+	//*)
+}
+
+about::~about()
+{
+	//(*Destroy(about)
+	//*)
+}
+
+
+void about::OnButton1Click(wxCommandEvent& event)
+{
+    Show(0);
+}

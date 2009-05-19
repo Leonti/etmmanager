@@ -1,0 +1,6 @@
+10 April 2008
+   released version 0.6.0 of etmmanager
+
+     Change log:
+        -New: First public version of this program - to use with timelogger 0.6.0
+

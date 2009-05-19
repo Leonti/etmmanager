@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="src/about.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="2624" topLine="8" />
+	</File>
+	<File name="src/about.h" open="0" top="0" tabpos="15">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/backup.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="3606" topLine="0" />
+	</File>
+	<File name="src/backup.h" open="0" top="0" tabpos="9">
+		<Cursor position="1745" topLine="0" />
+	</File>
+	<File name="src/contracts.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="146" topLine="0" />
+	</File>
+	<File name="src/contracts.h" open="0" top="0" tabpos="8">
+		<Cursor position="1966" topLine="60" />
+	</File>
+	<File name="src/db_set_panel.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="7099" topLine="115" />
+	</File>
+	<File name="src/db_set_panel.h" open="0" top="0" tabpos="5">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/edit_time.cpp" open="0" top="0" tabpos="9">
+		<Cursor position="7978" topLine="170" />
+	</File>
+	<File name="src/edit_time.h" open="0" top="0" tabpos="17">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/etmmanagerApp.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/etmmanagerApp.h" open="0" top="0" tabpos="18">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/etmmanagerMain.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="17367" topLine="301" />
+	</File>
+	<File name="src/etmmanagerMain.h" open="0" top="0" tabpos="1">
+		<Cursor position="2039" topLine="33" />
+	</File>
+	<File name="src/prog_set_panel.cpp" open="0" top="0" tabpos="13">
+		<Cursor position="4085" topLine="57" />
+	</File>
+	<File name="src/prog_set_panel.h" open="0" top="0" tabpos="10">
+		<Cursor position="1900" topLine="18" />
+	</File>
+	<File name="src/prog_set_panel_adv.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="4487" topLine="66" />
+	</File>
+	<File name="src/prog_set_panel_adv.h" open="0" top="0" tabpos="5">
+		<Cursor position="2291" topLine="28" />
+	</File>
+	<File name="src/round.cpp" open="0" top="0" tabpos="12">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/round.h" open="0" top="0" tabpos="20">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/settings.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="4639" topLine="60" />
+	</File>
+	<File name="src/settings.h" open="0" top="0" tabpos="7">
+		<Cursor position="1948" topLine="16" />
+	</File>
+	<File name="src/version.h" open="0" top="0" tabpos="2">
+		<Cursor position="456" topLine="0" />
+	</File>
+	<File name="src/workers.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="17381" topLine="291" />
+	</File>
+	<File name="src/workers.h" open="0" top="0" tabpos="6">
+		<Cursor position="4864" topLine="120" />
+	</File>
+	<File name="src/wx_std.cpp" open="0" top="0" tabpos="14">
+		<Cursor position="1652" topLine="0" />
+	</File>
+	<File name="src/wx_std.h" open="0" top="0" tabpos="23">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

@@ -108,13 +108,12 @@ void contracts::fillAll(){
 
     mysqlpp::Query query = conn -> query();
     query << "SELECT * FROM `contracts`";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
 contractIds.Add(int(row["id"]));
 wxString weekLimit = std2wx(std::string(row["week_limit"]),wxConvUI);
 wxString dayLimit = std2wx(std::string(row["day_limit"]),wxConvUI);
@@ -154,7 +153,7 @@ void contracts::OnListBox1Select(wxCommandEvent& event)
 {
     mysqlpp::Query query = conn -> query();
     query << "SELECT * FROM `contracts` WHERE `id`=" << contractIds[ListBox1->GetSelection()];
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
      if(res.num_rows() !=0 ){

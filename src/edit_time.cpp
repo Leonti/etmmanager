@@ -43,7 +43,7 @@ edit_time::edit_time(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxS
 	//(*Initialize(edit_time)
 	wxFlexGridSizer* FlexGridSizer2;
 	wxFlexGridSizer* FlexGridSizer3;
-	
+
 	Create(parent, id, _("Edit time entries"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("id"));
 	SetClientSize(wxDefaultSize);
 	Move(wxDefaultPosition);
@@ -68,7 +68,7 @@ edit_time::edit_time(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxS
 	SetSizer(FlexGridSizer1);
 	FlexGridSizer1->Fit(this);
 	FlexGridSizer1->SetSizeHints(this);
-	
+
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&edit_time::OnButton1Click);
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&edit_time::OnButton2Click);
 	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&edit_time::OnButton3Click);
@@ -98,19 +98,20 @@ employee_id = emp_id;
 
     mysqlpp::Query query = conn->query();
     query << "SELECT * FROM `time` WHERE `time_time` > '"<< wx2std(today.FormatISODate(),wxConvUI) <<"' AND `time_time` < '"<< wx2std(mysql_date.FormatISODate(),wxConvUI) <<"' AND `time_emp_id` = '"<< emp_id <<"' ORDER BY `time_time` ASC";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
 
     query << "SELECT `job_id`,`job_title` FROM `jobs`";
-    mysqlpp::Result res_job = query.store();
+    mysqlpp::StoreQueryResult res_job = query.store();
 
     times.Add(_T(""), 2);
     job_names.Add(_T(""), 2);
     time_ids.Add(0, 2);
 
     if(res){
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res_job.at(i); i++){
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
             jobs.Add(std2wx(std::string(row["job_title"]),wxConvUI));
             job_ids.Add(int(row["job_id"]));
             }
@@ -140,10 +141,10 @@ employee_id = emp_id;
 
 
 
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
             wxDateTime timec;
             timec.ParseDateTime(std2wx(std::string(row["time_time"]),wxConvUI).c_str());
             wxString timec_str = timec.FormatTime();

@@ -423,13 +423,13 @@ void etmmanagerFrame::refresh_workers(){
     workers_ids.Clear();
     mysqlpp::Query query = conn -> query();
     query << "SELECT * FROM `employees`";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
             std::string work_name = std::string(row["emp_name"]);
             Choice1->Append(std2wx(work_name, wxConvUI));
             workers_ids.Add(int(row["emp_id"]));
@@ -452,7 +452,7 @@ void etmmanagerFrame::emp_info(){
         mysqlpp::Query query = conn->query();
 
         query << "SELECT * FROM `employees` WHERE `emp_id`=" << workers_ids[Choice1 -> GetSelection()] << " LIMIT 1";
-        mysqlpp::Result res = query.store();
+        mysqlpp::StoreQueryResult res = query.store();
         if (res)
         {
             mysqlpp::Row row = res.at(0);
@@ -466,12 +466,12 @@ void etmmanagerFrame::emp_info(){
         res = query.store();
         if (res){
             wxString jobs;
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
             query << "SELECT `job_title` FROM `jobs` WHERE `job_id`='"<< int(row["job_id"]) <<"' LIMIT 1";
-            mysqlpp::Result res2 = query.store();
+            mysqlpp::StoreQueryResult res2 = query.store();
             mysqlpp::Row row2 = res2.at(0);
             jobs << std2wx(std::string(row2["job_title"]), wxConvUI) << _T("\n");
 
@@ -537,7 +537,7 @@ int job_id_yesterday = 0;
 wxDateTime mysql_yesterday = start_date;
 mysql_yesterday.Subtract(wxTimeSpan::Day());
 query << "SELECT * FROM `time` WHERE `time_time` > '"<< wx2std(mysql_yesterday.FormatISODate(),wxConvUI) <<"' AND `time_time` < '"<< wx2std(start_date.FormatISODate(),wxConvUI) <<"' AND `time_emp_id` = '"<< workers_ids[Choice1->GetSelection()] <<"' ORDER BY `time_time` DESC LIMIT 1";
-mysqlpp::Result res = query.store();
+mysqlpp::StoreQueryResult res = query.store();
 if(res.num_rows() != 0){
 mysqlpp::Row row = res.at(0);
 job_id_yesterday = int(row["time_job_id"]);
@@ -551,15 +551,14 @@ job_id_yesterday = int(row["time_job_id"]);
     query << "SELECT * FROM `time` WHERE `time_time` > '"<< wx2std(start_date.FormatISODate(),wxConvUI) <<"' AND `time_time` < '"<< wx2std(mysql_date.FormatISODate(),wxConvUI) <<"' AND `time_emp_id` = '"<< workers_ids[Choice1->GetSelection()] <<"' ORDER BY `time_time` ASC";
     start_date = mysql_date; //after we've got info we can increase start date for one more day
 
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
          if (res){
         diffs diffes;
          if(res.num_rows() != 0) {//we have some entries for this day
-        mysqlpp::Row row;
         mysqlpp::Row row0;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
 
             if(i !=0){ //we are already on second or higher entry - can subtract previous time
             row0 = res.at(i-1);
@@ -778,7 +777,7 @@ jobInfo etmmanagerFrame::getJob(int jobId){
     jobInf.Name = _("OFF");
     mysqlpp::Query query = conn->query();
     query << "SELECT * FROM `jobs` WHERE `job_id`='"<< jobId <<"' LIMIT 1";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
 if(res){
     mysqlpp::Row row = res.at(0);
 if(jobId != 0){
@@ -925,7 +924,7 @@ void etmmanagerFrame::OnEditLimits(wxCommandEvent& event)
 void etmmanagerFrame::checkUpdateDB(){
     mysqlpp::Query query = conn -> query();
     query << "SHOW TABLES";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
         if( res.num_rows() == 4){ //that means we have old database version - we need to add new tables:

@@ -215,13 +215,13 @@ void workers::refresh_workers(){
     workers_ids.Clear();
     mysqlpp::Query query = conn_workers -> query();
     query << "SELECT * FROM `employees`";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
             std::string work_name = std::string(row["emp_name"]);
             ListBox1->Append(std2wx(work_name, wxConvUI));
             workers_ids.Add(int(row["emp_id"]));
@@ -238,13 +238,13 @@ void workers::refresh_workers(){
     jobs_ids.Clear();
     mysqlpp::Query query = conn_workers -> query();
     query << "SELECT * FROM `jobs`";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
             jobs_listbox->Append(std2wx(std::string(row["job_title"]), wxConvUI));
             jobs_ids.Add(int(row["job_id"]));
         }
@@ -350,7 +350,7 @@ void workers::OnListBox1Select(wxCommandEvent& event)
     {
         mysqlpp::Query query = conn_workers->query();
         query << "SELECT * FROM `employees` WHERE `emp_id`=" << workers_ids[ListBox1 -> GetSelection()] << " LIMIT 1";
-        mysqlpp::Result res = query.store();
+        mysqlpp::StoreQueryResult res = query.store();
 
         if (res)
         {
@@ -380,7 +380,7 @@ void workers::Onjobs_listboxSelect(wxCommandEvent& event)
     {
         mysqlpp::Query query = conn_workers->query();
         query << "SELECT * FROM `jobs` WHERE `job_id`=" << jobs_ids[jobs_listbox -> GetSelection()] << " LIMIT 1";
-        mysqlpp::Result res = query.store();
+        mysqlpp::StoreQueryResult res = query.store();
 
         if (res)
         {
@@ -474,16 +474,16 @@ void workers::refresh_work_jobs(){
     work_job_ids.Clear();
     mysqlpp::Query query = conn_workers -> query();
     query << "SELECT * FROM `emp_jobs` WHERE `emp_id` ='"<< workers_ids[ListBox1 -> GetSelection()] <<"'";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
             int job_id = int(row["job_id"]);
             query << "SELECT `job_title` FROM `jobs` WHERE `job_id`='"<< job_id <<"' LIMIT 1";
-            mysqlpp::Result res2 = query.store();
+            mysqlpp::StoreQueryResult res2 = query.store();
             mysqlpp::Row row2 = res2.at(0);
             worker_jobs_listbox->Append(std2wx(std::string(row2["job_title"]), wxConvUI));
             work_job_ids.Add(int(row["id"]));
@@ -512,14 +512,14 @@ Choice1 -> Clear();
 contractIds.Clear();
     mysqlpp::Query query = conn_workers -> query();
     query << "SELECT * FROM `contracts`";
-    mysqlpp::Result res = query.store();
+    mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
         int defaultPosition = 0;
-        mysqlpp::Row row;
-        mysqlpp::Row::size_type i;
-        for (i = 0; row = res.at(i); ++i)
-        {
+mysqlpp::Row row;
+mysqlpp::StoreQueryResult::size_type i;
+for (i = 0; i < res.num_rows(); ++i) {
+
 contractIds.Add(int(row["id"]));
 wxString weekLimit = std2wx(std::string(row["week_limit"]),wxConvUI);
 wxString dayLimit = std2wx(std::string(row["day_limit"]),wxConvUI);

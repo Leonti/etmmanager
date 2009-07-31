@@ -27,6 +27,7 @@
 #include <wx/intl.h>
 #include <wx/font.h>
 #include <wx/bitmap.h>
+#include <wx/icon.h>
 #include <wx/image.h>
 #include <wx/artprov.h>
 //*)
@@ -188,12 +189,20 @@ readSet();
     Grid2->SetMinSize(wxSize(-1,-1));
     Grid2->SetMaxSize(wxSize(-1,-1));
     Grid2->SetToolTip(_("Totals for hours and payment"));
+    Grid2->EnableEditing(true);
+    Grid2->EnableGridLines(true);
+    Grid2->SetDefaultCellFont( Grid2->GetFont() );
+    Grid2->SetDefaultCellTextColour( Grid2->GetForegroundColour() );
     FlexGridSizer2->Add(Grid2, 1, wxALL|wxALIGN_BOTTOM|wxALIGN_CENTER_HORIZONTAL, 5);
     FlexGridSizer1->Add(FlexGridSizer2, 1, wxALL|wxEXPAND|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL, 5);
     FlexGridSizer3 = new wxFlexGridSizer(1, 1, 0, 0);
     Grid1 = new wxGrid(this, ID_GRID1, wxDefaultPosition, wxSize(555,-1), wxSUNKEN_BORDER|wxNO_BORDER, _T("ID_GRID1"));
     Grid1->CreateGrid(20,6);
     Grid1->SetToolTip(_("Double click on a date to change hours"));
+    Grid1->EnableEditing(true);
+    Grid1->EnableGridLines(true);
+    Grid1->SetDefaultCellFont( Grid1->GetFont() );
+    Grid1->SetDefaultCellTextColour( Grid1->GetForegroundColour() );
     FlexGridSizer3->Add(Grid1, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer1->Add(FlexGridSizer3, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     SetSizer(FlexGridSizer1);
@@ -429,7 +438,7 @@ void etmmanagerFrame::refresh_workers(){
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             std::string work_name = std::string(row["emp_name"]);
             Choice1->Append(std2wx(work_name, wxConvUI));
             workers_ids.Add(int(row["emp_id"]));
@@ -469,7 +478,7 @@ void etmmanagerFrame::emp_info(){
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             query << "SELECT `job_title` FROM `jobs` WHERE `job_id`='"<< int(row["job_id"]) <<"' LIMIT 1";
             mysqlpp::StoreQueryResult res2 = query.store();
             mysqlpp::Row row2 = res2.at(0);
@@ -559,7 +568,7 @@ job_id_yesterday = int(row["time_job_id"]);
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             if(i !=0){ //we are already on second or higher entry - can subtract previous time
             row0 = res.at(i-1);
             wxDateTime first_time;

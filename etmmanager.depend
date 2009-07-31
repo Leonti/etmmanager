@@ -3124,7 +3124,7 @@
 1242670532 /usr/include/wx-2.8/wx/imagiff.h
 	"wx/image.h"
 
-1248124467 source:/home/leonti/usa/etmmanager/src/etmmanagerMain.cpp
+1249015563 source:/home/leonti/usa/etmmanager/src/etmmanagerMain.cpp
 	"etmmanagerMain.h"
 	<wx/msgdlg.h>
 	<wx/settings.h>
@@ -3132,6 +3132,7 @@
 	<wx/intl.h>
 	<wx/font.h>
 	<wx/bitmap.h>
+	<wx/icon.h>
 	<wx/image.h>
 	<wx/artprov.h>
 	<wx/arrimpl.cpp>

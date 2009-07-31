@@ -221,7 +221,7 @@ void workers::refresh_workers(){
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             std::string work_name = std::string(row["emp_name"]);
             ListBox1->Append(std2wx(work_name, wxConvUI));
             workers_ids.Add(int(row["emp_id"]));
@@ -244,7 +244,7 @@ for (i = 0; i < res.num_rows(); ++i) {
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             jobs_listbox->Append(std2wx(std::string(row["job_title"]), wxConvUI));
             jobs_ids.Add(int(row["job_id"]));
         }
@@ -480,7 +480,7 @@ void workers::refresh_work_jobs(){
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             int job_id = int(row["job_id"]);
             query << "SELECT `job_title` FROM `jobs` WHERE `job_id`='"<< job_id <<"' LIMIT 1";
             mysqlpp::StoreQueryResult res2 = query.store();
@@ -513,12 +513,13 @@ contractIds.Clear();
     mysqlpp::Query query = conn_workers -> query();
     query << "SELECT * FROM `contracts`";
     mysqlpp::StoreQueryResult res = query.store();
-    if (res)
+   if (res)
     {
         int defaultPosition = 0;
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
+      row = res[i];
 
 contractIds.Add(int(row["id"]));
 wxString weekLimit = std2wx(std::string(row["week_limit"]),wxConvUI);
@@ -526,6 +527,7 @@ wxString dayLimit = std2wx(std::string(row["day_limit"]),wxConvUI);
 wxString multiplier = std2wx(std::string(row["multiplier"]),wxConvUI);
 int weekStarts = int(row["week_starts"]);
 bool isDefault = bool(row["default"]);
+
 
     wxDateTime::WeekDay day = wxDateTime::WeekDay(weekStarts);
 
@@ -541,6 +543,7 @@ Choice1 -> Append(lstboxEntry);
 Choice1 -> SetSelection(defaultPosition);
     }
     }
+
     }
 
 void workers::OnButton1Click1(wxCommandEvent& event)

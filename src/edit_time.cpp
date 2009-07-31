@@ -111,7 +111,7 @@ employee_id = emp_id;
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             jobs.Add(std2wx(std::string(row["job_title"]),wxConvUI));
             job_ids.Add(int(row["job_id"]));
             }
@@ -144,7 +144,7 @@ for (i = 0; i < res.num_rows(); ++i) {
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
-
+  row = res[i];
             wxDateTime timec;
             timec.ParseDateTime(std2wx(std::string(row["time_time"]),wxConvUI).c_str());
             wxString timec_str = timec.FormatTime();

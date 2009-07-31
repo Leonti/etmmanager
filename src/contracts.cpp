@@ -114,6 +114,7 @@ void contracts::fillAll(){
 mysqlpp::Row row;
 mysqlpp::StoreQueryResult::size_type i;
 for (i = 0; i < res.num_rows(); ++i) {
+      row = res[i];
 contractIds.Add(int(row["id"]));
 wxString weekLimit = std2wx(std::string(row["week_limit"]),wxConvUI);
 wxString dayLimit = std2wx(std::string(row["day_limit"]),wxConvUI);

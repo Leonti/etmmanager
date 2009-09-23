@@ -32,8 +32,11 @@
 #include <mysql++.h>
 #include <string>
 #include <iostream>
+#include <sstream>
 #include "wx_std.h"
 #include "contracts.h"
+#include <wx/dcclient.h>
+//#include <sstream>
 
 class workers: public wxDialog
 {
@@ -47,6 +50,7 @@ class workers: public wxDialog
 		wxButton* add_job_emp_button;
 		wxTextCtrl* w_code_txt;
 		wxListBox* ListBox1;
+		wxWindow* Image1;
 		wxListBox* jobs_listbox;
 		wxButton* Button4;
 		wxTextCtrl* w_comment_txt;
@@ -93,6 +97,7 @@ class workers: public wxDialog
 		static const long ID_BUTTON2;
 		static const long ID_BUTTON3;
 		static const long ID_BUTTON4;
+		static const long ID_WIND1;
 		static const long ID_STATICTEXT7;
 		static const long ID_LISTBOX2;
 		static const long ID_BUTTON5;
@@ -127,11 +132,16 @@ class workers: public wxDialog
 		void Onworker_jobs_listboxSelect(wxCommandEvent& event);
 		void Onremove_jobClick(wxCommandEvent& event);
 		void OnButton1Click1(wxCommandEvent& event);
+		void OnImage1Paint(wxPaintEvent& event);
+		void OnImage1LeftUp(wxMouseEvent& event);
 		//*)
 		wxArrayInt workers_ids;
 		wxArrayInt jobs_ids;
 		wxArrayInt work_job_ids;
 		wxArrayInt contractIds;
+		wxClientDC* photoDC;
+        wxWindow* photoWindow;
+
 		int contractDef;
 		void refresh_workers(void);
 		void refresh_jobs(void);

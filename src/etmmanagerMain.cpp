@@ -85,6 +85,7 @@ const long etmmanagerFrame::ID_STATICTEXT15 = wxNewId();
 const long etmmanagerFrame::ID_PANEL1 = wxNewId();
 const long etmmanagerFrame::ID_GRID2 = wxNewId();
 const long etmmanagerFrame::ID_GRID1 = wxNewId();
+const long etmmanagerFrame::ID_BUTTON2 = wxNewId();
 const long etmmanagerFrame::ID_MENUITEM4 = wxNewId();
 const long etmmanagerFrame::ID_MENUITEM5 = wxNewId();
 const long etmmanagerFrame::ID_MENUITEM1 = wxNewId();
@@ -204,6 +205,8 @@ readSet();
     Grid1->SetDefaultCellFont( Grid1->GetFont() );
     Grid1->SetDefaultCellTextColour( Grid1->GetForegroundColour() );
     FlexGridSizer3->Add(Grid1, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    Button2 = new wxButton(this, ID_BUTTON2, _("Print"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
+    FlexGridSizer3->Add(Button2, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer1->Add(FlexGridSizer3, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     SetSizer(FlexGridSizer1);
     MenuBar1 = new wxMenuBar();
@@ -246,6 +249,7 @@ readSet();
     Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&etmmanagerFrame::OnButton1Click);
     Connect(ID_CHOICE1,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&etmmanagerFrame::OnChoice1Select);
     Connect(ID_GRID1,wxEVT_GRID_LABEL_LEFT_DCLICK,(wxObjectEventFunction)&etmmanagerFrame::OnGrid1LabelLeftDClick);
+    Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&etmmanagerFrame::OnButton2Click1);
     Connect(ID_MENUITEM4,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&etmmanagerFrame::OnMakeBackupMenu);
     Connect(ID_MENUITEM5,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&etmmanagerFrame::OnRestoreFromBackupMenu);
     Connect(ID_MENUITEM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&etmmanagerFrame::OnInstallStructureMenu);
@@ -930,6 +934,14 @@ void etmmanagerFrame::OnEditLimits(wxCommandEvent& event)
     refresh_workers();
 }
 
+bool etmmanagerFrame::printTable(wxString& htmlTable){
+
+    wxHtmlEasyPrinting* print = new wxHtmlEasyPrinting();
+if(print->PrintText( htmlTable )){
+return 1;
+}
+}
+
 void etmmanagerFrame::checkUpdateDB(){
     mysqlpp::Query query = conn -> query();
     query << "SHOW TABLES";
@@ -964,3 +976,33 @@ wxMessageBox(_("Database was updated!"));
 
         }
     }
+
+void etmmanagerFrame::OnButton2Click1(wxCommandEvent& event){
+wxString htmlTable;
+htmlTable << _T("<table border=1><th></th>");
+
+
+for(int h=0; h<6; ++h){
+    htmlTable << _T("<th>") << Grid1->GetColLabelValue(h) << _T("</th>");
+}
+
+
+int i = 0;
+    for(i; i < Grid1->GetNumberRows(); ++i){
+        if(Grid1->GetCellValue(i,0) == _T(""))
+                            break;
+    }
+
+for(int j=0; j < i; ++j){
+    htmlTable << _T("<tr>");
+    htmlTable << _T("<td>") << Grid1->GetRowLabelValue(j) << _T("</td>");
+for(int k=0; k < 6; ++k){
+    htmlTable << _T("<td>") << Grid1->GetCellValue(j,k) << _T("</td>");
+}
+    htmlTable << _T("</tr>");
+}
+
+htmlTable << _T("</table>");
+
+printTable(htmlTable);
+}

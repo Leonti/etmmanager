@@ -1,11 +1,11 @@
 [Desktop Entry]
-Encoding=UTF-8
-GenericName=ETM Manager for time logging
-Name=ETM Manager
+X-SuSE-translate=true
+Categories=Application;Utility;X-SuSE-TimeUtility;
+Comment=ETM Manager for time logging
 Exec=etmmanager
+Name=ETM Manager
+GenericName=ETM Manager for time logging
 Icon=etmmanager
+StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Utility;X-SuSE-TimeUtility;
- 
-StartupNotify=true

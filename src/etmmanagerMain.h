@@ -53,6 +53,7 @@
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
 #include "version.h"
+#include <wx/html/htmprint.h>
 
 struct diffs{
 wxTimeSpan duration;
@@ -105,6 +106,7 @@ class etmmanagerFrame: public wxFrame
         void OnRestoreFromBackupMenu(wxCommandEvent& event);
         void OnInstallStructureMenu(wxCommandEvent& event);
         void OnEditLimits(wxCommandEvent& event);
+        void OnButton2Click1(wxCommandEvent& event);
         //*)
 
         //(*Identifiers(etmmanagerFrame)
@@ -132,6 +134,7 @@ class etmmanagerFrame: public wxFrame
         static const long ID_PANEL1;
         static const long ID_GRID2;
         static const long ID_GRID1;
+        static const long ID_BUTTON2;
         static const long ID_MENUITEM4;
         static const long ID_MENUITEM5;
         static const long ID_MENUITEM1;
@@ -152,6 +155,7 @@ class etmmanagerFrame: public wxFrame
         wxMenu* Menu3;
         wxGrid* Grid1;
         wxButton* Button1;
+        wxButton* Button2;
         wxStaticText* weekStarts;
         wxStaticText* StaticText1;
         wxStaticText* StaticText10;
@@ -198,6 +202,7 @@ class etmmanagerFrame: public wxFrame
         wxLocale Locale;
         void readSet(void);
         void checkUpdateDB();
+        bool printTable(wxString&);
 
         DECLARE_EVENT_TABLE()
 };

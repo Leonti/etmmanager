@@ -19,6 +19,8 @@
 *************************************************************************************/
 #include "workers.h"
 
+#include <wx/image.h>
+
 //(*InternalHeaders(workers)
 #include <wx/string.h>
 #include <wx/intl.h>
@@ -26,6 +28,10 @@
 //*)
 
 #include <wx/msgdlg.h>
+
+#include <wx/filedlg.h>
+
+
 
 //(*IdInit(workers)
 const long workers::ID_STATICTEXT9 = wxNewId();
@@ -41,6 +47,7 @@ const long workers::ID_BUTTON1 = wxNewId();
 const long workers::ID_BUTTON2 = wxNewId();
 const long workers::ID_BUTTON3 = wxNewId();
 const long workers::ID_BUTTON4 = wxNewId();
+const long workers::ID_WIND1 = wxNewId();
 const long workers::ID_STATICTEXT7 = wxNewId();
 const long workers::ID_LISTBOX2 = wxNewId();
 const long workers::ID_BUTTON5 = wxNewId();
@@ -66,10 +73,12 @@ END_EVENT_TABLE()
 
 workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size)
 {
+wxSize for_image(200,200);
 	//(*Initialize(workers)
 	wxFlexGridSizer* FlexGridSizer8;
 	wxFlexGridSizer* FlexGridSizer1;
 	wxFlexGridSizer* FlexGridSizer2;
+	wxFlexGridSizer* FlexGridSizer11;
 	wxFlexGridSizer* FlexGridSizer7;
 	wxFlexGridSizer* FlexGridSizer4;
 	wxFlexGridSizer* FlexGridSizer9;
@@ -79,7 +88,7 @@ workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize&
 	wxFlexGridSizer* FlexGridSizer5;
 	wxStaticBoxSizer* StaticBoxSizer1;
 
-	Create(parent, id, _("Employees and jobs editing"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("id"));
+	Create(parent, wxID_ANY, _("Employees and jobs editing"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	FlexGridSizer1 = new wxFlexGridSizer(0, 3, 0, 0);
 	FlexGridSizer2 = new wxFlexGridSizer(4, 1, 0, 0);
 	StaticText9 = new wxStaticText(this, ID_STATICTEXT9, _("Employees"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT9"));
@@ -87,7 +96,7 @@ workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize&
 	StaticText9->SetFont(StaticText9Font);
 	FlexGridSizer2->Add(StaticText9, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	FlexGridSizer4 = new wxFlexGridSizer(0, 2, 0, 0);
-	ListBox1 = new wxListBox(this, ID_LISTBOX1, wxPoint(16,16), wxSize(136,390), 0, 0, 0, wxDefaultValidator, _T("ID_LISTBOX1"));
+	ListBox1 = new wxListBox(this, ID_LISTBOX1, wxDefaultPosition, wxSize(174,390), 0, 0, 0, wxDefaultValidator, _T("ID_LISTBOX1"));
 	FlexGridSizer4->Add(ListBox1, 1, wxALL|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL, 5);
 	FlexGridSizer9 = new wxFlexGridSizer(3, 1, 0, 0);
 	FlexGridSizer5 = new wxFlexGridSizer(5, 2, 0, 0);
@@ -128,6 +137,10 @@ workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize&
 	FlexGridSizer9->Add(FlexGridSizer10, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
 	FlexGridSizer4->Add(FlexGridSizer9, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	FlexGridSizer2->Add(FlexGridSizer4, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	FlexGridSizer11 = new wxFlexGridSizer(0, 2, 0, 0);
+	Image1 = new wxWindow(this,ID_WIND1);
+    Image1 -> SetSize(200,200);
+	FlexGridSizer11->Add(Image1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	FlexGridSizer6 = new wxFlexGridSizer(2, 2, 0, 0);
 	StaticText7 = new wxStaticText(this, ID_STATICTEXT7, _("Employee\'s list of jobs:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT7"));
 	FlexGridSizer6->Add(StaticText7, 1, wxALL|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL, 5);
@@ -138,7 +151,8 @@ workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize&
 	remove_job->Disable();
 	remove_job->SetToolTip(_("Remove selected job from the list of jobs assigned to an employee"));
 	FlexGridSizer6->Add(remove_job, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	FlexGridSizer2->Add(FlexGridSizer6, 1, wxLEFT|wxRIGHT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 10);
+	FlexGridSizer11->Add(FlexGridSizer6, 1, wxLEFT|wxRIGHT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 10);
+	FlexGridSizer2->Add(FlexGridSizer11, 1, wxEXPAND|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
 	FlexGridSizer1->Add(FlexGridSizer2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	add_job_emp_button = new wxButton(this, ID_BUTTON6, _("<--"), wxPoint(400,344), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON6"));
 	add_job_emp_button->Disable();
@@ -189,6 +203,8 @@ workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize&
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&workers::OnButton1Click);
 	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&workers::OnButton2Click);
 	Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&workers::OnButton3Click);
+	Image1->Connect(wxEVT_PAINT,(wxObjectEventFunction)&workers::OnImage1Paint,0,this);
+	Image1->Connect(wxEVT_LEFT_UP,(wxObjectEventFunction)&workers::OnImage1LeftUp,0,this);
 	Connect(ID_LISTBOX2,wxEVT_COMMAND_LISTBOX_SELECTED,(wxObjectEventFunction)&workers::Onworker_jobs_listboxSelect);
 	Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&workers::Onremove_jobClick);
 	Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&workers::Onadd_job_emp_buttonClick);
@@ -198,6 +214,9 @@ workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize&
 	Connect(ID_LISTBOX3,wxEVT_COMMAND_LISTBOX_SELECTED,(wxObjectEventFunction)&workers::Onjobs_listboxSelect);
 	Connect(ID_BUTTON10,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&workers::OnButton4Click);
 	//*)
+
+
+//		Image1 -> SetSize(200,200); //paste above
 }
 
 workers::~workers()
@@ -365,6 +384,26 @@ void workers::OnListBox1Select(wxCommandEvent& event)
                 }else{
             Choice1 -> SetSelection(contractDef);
                     }
+
+    wxPoint p=photoWindow->GetPosition();
+    wxSize sz=photoWindow->GetClientSize();
+
+                    if(std::string(row["photo"]) != ""){
+mysqlpp::Row::reference it = row["photo"];
+const char* str = it.data();
+int length = it.length();
+
+unsigned char * NewImgData = ( unsigned char * ) malloc( length );
+
+    memcpy( NewImgData, str, length );
+    wxImage img(200,200,NewImgData);
+    photoDC -> DrawBitmap(img.Scale(sz.GetWidth(),sz.GetHeight()),0,0,false);
+}else{
+    wxImage img(_T("/home/leonti/czel.png"),wxBITMAP_TYPE_PNG);
+    photoDC -> Clear();
+    photoDC -> DrawBitmap(img.Scale(sz.GetWidth(),sz.GetHeight()),0,0,false);
+    photoDC -> DrawText(_("No photo"), 10, 10);
+}
         }
 
 if (jobs_listbox->GetSelection() != wxNOT_FOUND){
@@ -553,4 +592,57 @@ void workers::OnButton1Click1(wxCommandEvent& event)
     limitsDlg->fillAll();
     limitsDlg->ShowModal();
     refreshLimits();
+}
+
+void workers::OnImage1Paint(wxPaintEvent& event)
+{
+        wxImage img(_T("/home/leonti/czel.png"),wxBITMAP_TYPE_PNG);
+    photoWindow = FindWindow(ID_WIND1);
+    photoDC = new wxClientDC(photoWindow);
+
+    wxPoint p=photoWindow->GetPosition();
+    wxSize sz=photoWindow->GetClientSize();
+    photoDC -> DrawBitmap(img.Scale(sz.GetWidth(),sz.GetHeight()),0,0,false);
+//  evt.Skip();
+}
+
+void workers::OnImage1LeftUp(wxMouseEvent& event)
+{
+
+
+    //saving image to the database
+            if (ListBox1->GetSelection() != wxNOT_FOUND)
+    {
+    wxFileDialog* filedialog = new wxFileDialog(this);
+    filedialog -> SetWildcard(_T("JPG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif"));
+    filedialog -> ShowModal();
+
+    if(filedialog->GetFilename() != _T("")){
+    wxImage img(filedialog->GetPath(), wxBITMAP_TYPE_ANY);
+    wxPoint p=photoWindow->GetPosition();
+    wxSize sz=photoWindow->GetClientSize();
+    photoDC -> DrawBitmap(img.Scale(sz.GetWidth(),sz.GetHeight()),0,0,false);
+
+        std::ostringstream os;
+        img.Rescale(200,200);
+int dataSize = img.GetWidth( )*img.GetHeight( )*3;
+
+os.write((char *) (img.GetData()), dataSize);
+
+std::string histStr = os.str();
+//wxMessageBox(std2wx(histStr,wxConvUI));
+
+
+
+        mysqlpp::Query query = conn_workers->query();
+        query << "UPDATE `employees` SET `photo` = '" << mysqlpp::escape << histStr << "' WHERE `emp_id`=" << workers_ids[ListBox1 -> GetSelection()] << " LIMIT 1";
+        query.execute();
+
+    }
+    //end saving
+
+
+
+    }
+
 }

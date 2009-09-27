@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `emp_ssn` text character set utf8 collate utf8_unicode_ci NOT NULL,
   `contract_id` int(11) NOT NULL default '0',
   `emp_comment` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `photo` longblob NOT NULL,
   PRIMARY KEY  (`emp_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

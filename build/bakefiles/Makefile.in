@@ -69,7 +69,7 @@ all: etmmanager$(EXEEXT)
 
 install: install_etmmanager
 	$(INSTALL_DIR) $(DESTDIR)$(datadir)/etmmanager
-	(cd $(srcdir)/src ; $(INSTALL_DATA)  ../share/etmmanager/table_schema.sql $(DESTDIR)$(datadir)/etmmanager)
+	(cd $(srcdir)/src ; $(INSTALL_DATA)  ../share/etmmanager/table_schema.sql ../share/etmmanager/photo.png $(DESTDIR)$(datadir)/etmmanager)
 	$(INSTALL_DIR) $(DESTDIR)$(datadir)
 	for f in locale/pl/LC_MESSAGES/etmmanager.mo locale/es/LC_MESSAGES/etmmanager.mo locale/ru/LC_MESSAGES/etmmanager.mo locale/pt/LC_MESSAGES/etmmanager.mo; do \
 	if test ! -d $(DESTDIR)$(datadir)/`dirname $$f` ; then \
@@ -83,7 +83,7 @@ install: install_etmmanager
 	(cd $(srcdir)/src ; $(INSTALL_DATA)  etmmanager.png $(DESTDIR)$(datadir)/pixmaps)
 
 uninstall: uninstall_etmmanager
-	(cd $(DESTDIR)$(datadir)/etmmanager ; rm -f table_schema.sql)
+	(cd $(DESTDIR)$(datadir)/etmmanager ; rm -f table_schema.sql photo.png)
 	for f in locale/pl/LC_MESSAGES/etmmanager.mo locale/es/LC_MESSAGES/etmmanager.mo locale/ru/LC_MESSAGES/etmmanager.mo locale/pt/LC_MESSAGES/etmmanager.mo; do \
 	rm -f $(DESTDIR)$(datadir)/$$f; \
 	done

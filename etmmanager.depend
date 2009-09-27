@@ -2541,15 +2541,22 @@
 
 1253026273 /usr/include/wx-2.8/wx/gtk/stattext.h
 
-1220266109 source:/home/leonti/usa/etmmanager/src/backup.cpp
+1253888109 source:/home/leonti/usa/etmmanager/src/backup.cpp
 	"backup.h"
-	<wx/platinfo.h>
+	"wx_std.h"
 
-1219330910 /home/leonti/usa/etmmanager/src/backup.h
+1253888109 /home/leonti/usa/etmmanager/src/backup.h
 	<wx/utils.h>
 	<wx/string.h>
-	<wx/config.h>
-	<wx/filename.h>
+	<wx/ffile.h>
+	<mysql++.h>
+	<wx/regex.h>
+	<wx/tokenzr.h>
+	<string>
+	<iostream>
+	<sstream>
+	<wx/msgdlg.h>
+	<wx/stdpaths.h>
 
 1253026272 /usr/include/wx-2.8/wx/config.h
 	"wx/confbase.h"
@@ -2697,7 +2704,7 @@
 	"wx/defs.h"
 	"wx/dialog.h"
 
-1219330466 source:/home/leonti/usa/etmmanager/src/db_set_panel.cpp
+1253824820 source:/home/leonti/usa/etmmanager/src/db_set_panel.cpp
 	"db_set_panel.h"
 	<wx/string.h>
 	<wx/intl.h>
@@ -3048,7 +3055,7 @@
 	<wx/config.h>
 	<wx/msgdlg.h>
 
-1253647795 /home/leonti/usa/etmmanager/src/workers.h
+1253817824 /home/leonti/usa/etmmanager/src/workers.h
 	<wx/dialog.h>
 	<wx/sizer.h>
 	<wx/button.h>
@@ -3063,10 +3070,12 @@
 	"wx_std.h"
 	"contracts.h"
 	<wx/dcclient.h>
+	<wx/stdpaths.h>
+	<wx/filename.h>
 
 1209998591 /home/leonti/usa/etmmanager/src/round.h
 
-1217365107 /home/leonti/usa/etmmanager/src/version.h
+1253818431 /home/leonti/usa/etmmanager/src/version.h
 
 1253026273 /usr/include/wx-2.8/wx/image.h
 	"wx/defs.h"
@@ -3127,7 +3136,7 @@
 1253026273 /usr/include/wx-2.8/wx/imagiff.h
 	"wx/image.h"
 
-1253644875 source:/home/leonti/usa/etmmanager/src/etmmanagerMain.cpp
+1253824640 source:/home/leonti/usa/etmmanager/src/etmmanagerMain.cpp
 	"etmmanagerMain.h"
 	<wx/msgdlg.h>
 	<wx/settings.h>
@@ -3172,12 +3181,12 @@
 
 1253026272 /usr/include/wx-2.8/wx/arrimpl.cpp
 
-1219340816 source:/home/leonti/usa/etmmanager/src/prog_set_panel.cpp
+1253819646 source:/home/leonti/usa/etmmanager/src/prog_set_panel.cpp
 	"prog_set_panel.h"
 	<wx/string.h>
 	<wx/intl.h>
 
-1219334817 source:/home/leonti/usa/etmmanager/src/prog_set_panel_adv.cpp
+1253819651 source:/home/leonti/usa/etmmanager/src/prog_set_panel_adv.cpp
 	"prog_set_panel_adv.h"
 	<wx/string.h>
 	<wx/intl.h>
@@ -3186,7 +3195,7 @@
 1209998591 source:/home/leonti/usa/etmmanager/src/round.cpp
 	"round.h"
 
-1217175746 source:/home/leonti/usa/etmmanager/src/settings.cpp
+1253819795 source:/home/leonti/usa/etmmanager/src/settings.cpp
 	"settings.h"
 	<wx/string.h>
 	<wx/intl.h>
@@ -3297,7 +3306,7 @@
 	"wx/intl.h"
 	"wx/cmndata.h"
 
-1253644497 source:/home/leonti/usa/etmmanager/src/workers.cpp
+1253895409 source:/home/leonti/usa/etmmanager/src/workers.cpp
 	"workers.h"
 	<wx/image.h>
 	<wx/string.h>
@@ -3401,4 +3410,20 @@
 	"wx/defs.h"
 	"wx/geometry.h"
 	"wx/dynarray.h"
+
+1253026272 /usr/include/wx-2.8/wx/ffile.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/filefn.h"
+	"wx/convauto.h"
+	<stdio.h>
+
+1253026272 /usr/include/wx-2.8/wx/regex.h
+	"wx/defs.h"
+	"wx/string.h"
+
+1253026272 /usr/include/wx-2.8/wx/tokenzr.h
+	"wx/object.h"
+	"wx/string.h"
+	"wx/arrstr.h"
 

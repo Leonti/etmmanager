@@ -32,7 +32,6 @@
 #include <wx/filedlg.h>
 
 
-
 //(*IdInit(workers)
 const long workers::ID_STATICTEXT9 = wxNewId();
 const long workers::ID_LISTBOX1 = wxNewId();
@@ -73,7 +72,6 @@ END_EVENT_TABLE()
 
 workers::workers(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size)
 {
-wxSize for_image(200,200);
 	//(*Initialize(workers)
 	wxFlexGridSizer* FlexGridSizer8;
 	wxFlexGridSizer* FlexGridSizer1;
@@ -139,7 +137,7 @@ wxSize for_image(200,200);
 	FlexGridSizer2->Add(FlexGridSizer4, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	FlexGridSizer11 = new wxFlexGridSizer(0, 2, 0, 0);
 	Image1 = new wxWindow(this,ID_WIND1);
-    Image1 -> SetSize(200,200);
+	Image1 -> SetSize(200,200);
 	FlexGridSizer11->Add(Image1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	FlexGridSizer6 = new wxFlexGridSizer(2, 2, 0, 0);
 	StaticText7 = new wxStaticText(this, ID_STATICTEXT7, _("Employee\'s list of jobs:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT7"));
@@ -388,10 +386,10 @@ void workers::OnListBox1Select(wxCommandEvent& event)
     wxPoint p=photoWindow->GetPosition();
     wxSize sz=photoWindow->GetClientSize();
 
-                    if(std::string(row["photo"]) != ""){
 mysqlpp::Row::reference it = row["photo"];
-const char* str = it.data();
 int length = it.length();
+                    if(length != 0){
+const char* str = it.data();
 
 unsigned char * NewImgData = ( unsigned char * ) malloc( length );
 
@@ -399,7 +397,11 @@ unsigned char * NewImgData = ( unsigned char * ) malloc( length );
     wxImage img(200,200,NewImgData);
     photoDC -> DrawBitmap(img.Scale(sz.GetWidth(),sz.GetHeight()),0,0,false);
 }else{
-    wxImage img(_T("/home/leonti/czel.png"),wxBITMAP_TYPE_PNG);
+wxStandardPaths path;
+wxFileName imageName;
+imageName.Assign(path.GetDataDir(),_T("photo.png"));
+
+    wxImage img(imageName.GetFullPath(),wxBITMAP_TYPE_PNG);
     photoDC -> Clear();
     photoDC -> DrawBitmap(img.Scale(sz.GetWidth(),sz.GetHeight()),0,0,false);
     photoDC -> DrawText(_("No photo"), 10, 10);
@@ -596,7 +598,10 @@ void workers::OnButton1Click1(wxCommandEvent& event)
 
 void workers::OnImage1Paint(wxPaintEvent& event)
 {
-        wxImage img(_T("/home/leonti/czel.png"),wxBITMAP_TYPE_PNG);
+    wxStandardPaths path;
+wxFileName imageName;
+imageName.Assign(path.GetDataDir(),_T("photo.png"));
+        wxImage img(imageName.GetFullPath(),wxBITMAP_TYPE_PNG);
     photoWindow = FindWindow(ID_WIND1);
     photoDC = new wxClientDC(photoWindow);
 

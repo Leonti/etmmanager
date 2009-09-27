@@ -37,6 +37,8 @@
 #include "contracts.h"
 #include <wx/dcclient.h>
 //#include <sstream>
+#include <wx/stdpaths.h>
+#include <wx/filename.h>
 
 class workers: public wxDialog
 {

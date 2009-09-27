@@ -878,14 +878,14 @@ for(int i=0; i<20; i++){
 
 void etmmanagerFrame::OnMakeBackupMenu(wxCommandEvent& event)
 {
-        //make backup
+    //make backup
         if(dbase_connected){
     wxFileDialog* save_file_dlg = new wxFileDialog(this, _("Select file"), wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_DEFAULT_STYLE|wxFD_SAVE, wxDefaultPosition, wxDefaultSize, _T("wxFileDialog"));
     save_file_dlg -> ShowModal();
-    if(save_file_dlg->GetFilename() != _T("")){
+    if(save_file_dlg->GetFilename() != _("")){
 //    wxString result;
-   int result = make_dump(config, host, user, pass, dbase, save_file_dlg -> GetPath());
-if(result != 0) wxMessageBox(_("There was a problem. Backup is not done."));
+   int result = makeDump(conn, save_file_dlg -> GetPath());
+if(result == 0) wxMessageBox(_("There was a problem. Backup is not done."));
     }
         }else{
      wxMessageBox(_("You are not connected to the database!"));
@@ -894,15 +894,14 @@ if(result != 0) wxMessageBox(_("There was a problem. Backup is not done."));
 
 void etmmanagerFrame::OnRestoreFromBackupMenu(wxCommandEvent& event)
 {
-        //rstore from backup
+    //rstore from backup
     if(dbase_connected){
     wxFileDialog* open_file_dlg = new wxFileDialog(this, _("Select file"), wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_DEFAULT_STYLE|wxFD_OPEN, wxDefaultPosition, wxDefaultSize, _T("wxFileDialog"));
     open_file_dlg -> ShowModal();
-        if(open_file_dlg->GetFilename() != _T("")){
+        if(open_file_dlg->GetFilename() != _("")){
    // wxString result;
-    int result = restore_table(config, host, user, pass, dbase, open_file_dlg -> GetPath());
+    int result = restoreFromDump(conn, open_file_dlg -> GetPath());
 if(result == 0) wxMessageBox(_("There was a problem. Data is not restored."));
-refresh_workers();
         }
     }else{
      wxMessageBox(_("You are not connected to the database!"));
@@ -913,16 +912,18 @@ void etmmanagerFrame::OnInstallStructureMenu(wxCommandEvent& event)
 {
 
     if(dbase_connected){
-wxStandardPaths path;
+
+ //   int result = restore_table(host, user, pass, dbase, _("table_schema.sql"));
+         wxStandardPaths path;
 wxFileName tableName;
 tableName.Assign(path.GetDataDir(),_T("table_schema.sql"));
-    int result = restore_table(config, host, user, pass, dbase, tableName.GetFullPath());
+   int result = restoreFromDump(conn, tableName.GetFullPath());
+
 if(result == 0) wxMessageBox(_("There was a problem. Database structure is not installed"));
-refresh_workers();
+
     }else{
      wxMessageBox(_("You are not connected to the database!"));
         }
-
 }
 
 void etmmanagerFrame::OnEditLimits(wxCommandEvent& event)
@@ -978,12 +979,18 @@ wxMessageBox(_("Database was updated!"));
     }
 
 void etmmanagerFrame::OnButton2Click1(wxCommandEvent& event){
+    wxDateTime start_date = DatePickerCtrl1->GetValue();
+    wxDateTime end_date = DatePickerCtrl2->GetValue();
+
 wxString htmlTable;
-htmlTable << _T("<table border=1><th></th>");
+
+htmlTable << _("Employee: ") <<  Choice1 -> GetStringSelection() << _T("<br>Start date: ") \
+<< start_date.FormatDate() << _T("<br>End date: ") << end_date.FormatDate();
+htmlTable << _T("<br><br><table border=0 cellpadding=3 bgcolor=#000000><th bgcolor=white></th>");
 
 
 for(int h=0; h<6; ++h){
-    htmlTable << _T("<th>") << Grid1->GetColLabelValue(h) << _T("</th>");
+    htmlTable << _T("<th bgcolor=white>") << Grid1->GetColLabelValue(h) << _T("</th>");
 }
 
 
@@ -995,14 +1002,25 @@ int i = 0;
 
 for(int j=0; j < i; ++j){
     htmlTable << _T("<tr>");
-    htmlTable << _T("<td>") << Grid1->GetRowLabelValue(j) << _T("</td>");
+    htmlTable << _T("<td bgcolor=white>") << Grid1->GetRowLabelValue(j) << _T("</td>");
+
+    int cell_w;
+    int cell_h;
+    Grid1->GetCellSize(j,0,&cell_h,&cell_w);
+
+if(cell_w != 6){
 for(int k=0; k < 6; ++k){
-    htmlTable << _T("<td>") << Grid1->GetCellValue(j,k) << _T("</td>");
+    htmlTable << _T("<td bgcolor=")<< Grid1->GetCellBackgroundColour(j,k).GetAsString(wxC2S_HTML_SYNTAX) <<_T(">") << Grid1->GetCellValue(j,k) << _T("</td>");
 }
+}else{
+    htmlTable << _T("<td colspan = 6 align = center bgcolor=")<< Grid1->GetCellBackgroundColour(j,0).GetAsString(wxC2S_HTML_SYNTAX) <<_T(">")<< Grid1->GetCellValue(j,0) << _T("</td>");
+}
+
     htmlTable << _T("</tr>");
 }
 
 htmlTable << _T("</table>");
 
 printTable(htmlTable);
+
 }

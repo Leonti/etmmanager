@@ -7,25 +7,25 @@
 	<File name="src/about.h" open="0" top="0" tabpos="15">
 		<Cursor position="1652" topLine="0" />
 	</File>
-	<File name="src/backup.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2018" topLine="40" />
+	<File name="src/backup.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="2679" topLine="54" />
 	</File>
-	<File name="src/backup.h" open="0" top="0" tabpos="9">
-		<Cursor position="1745" topLine="0" />
+	<File name="src/backup.h" open="0" top="0" tabpos="5">
+		<Cursor position="667" topLine="1" />
 	</File>
-	<File name="src/contracts.cpp" open="1" top="0" tabpos="2">
+	<File name="src/contracts.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="8064" topLine="148" />
 	</File>
 	<File name="src/contracts.h" open="0" top="0" tabpos="8">
 		<Cursor position="1966" topLine="60" />
 	</File>
 	<File name="src/db_set_panel.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="6949" topLine="108" />
+		<Cursor position="7061" topLine="12" />
 	</File>
 	<File name="src/db_set_panel.h" open="0" top="0" tabpos="5">
-		<Cursor position="1652" topLine="0" />
+		<Cursor position="1652" topLine="40" />
 	</File>
-	<File name="src/edit_time.cpp" open="1" top="0" tabpos="3">
+	<File name="src/edit_time.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="6782" topLine="135" />
 	</File>
 	<File name="src/edit_time.h" open="0" top="0" tabpos="17">
@@ -37,8 +37,8 @@
 	<File name="src/etmmanagerApp.h" open="0" top="0" tabpos="18">
 		<Cursor position="1652" topLine="0" />
 	</File>
-	<File name="src/etmmanagerMain.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="40080" topLine="974" />
+	<File name="src/etmmanagerMain.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="40285" topLine="972" />
 	</File>
 	<File name="src/etmmanagerMain.h" open="0" top="0" tabpos="1">
 		<Cursor position="2039" topLine="33" />
@@ -61,8 +61,8 @@
 	<File name="src/round.h" open="0" top="0" tabpos="20">
 		<Cursor position="1652" topLine="0" />
 	</File>
-	<File name="src/settings.cpp" open="0" top="0" tabpos="11">
-		<Cursor position="3771" topLine="60" />
+	<File name="src/settings.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="4343" topLine="80" />
 	</File>
 	<File name="src/settings.h" open="0" top="0" tabpos="7">
 		<Cursor position="1948" topLine="16" />
@@ -70,11 +70,11 @@
 	<File name="src/version.h" open="0" top="0" tabpos="2">
 		<Cursor position="456" topLine="0" />
 	</File>
-	<File name="src/workers.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="21343" topLine="386" />
+	<File name="src/workers.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="20716" topLine="379" />
 	</File>
 	<File name="src/workers.h" open="1" top="0" tabpos="5">
-		<Cursor position="5050" topLine="127" />
+		<Cursor position="2002" topLine="21" />
 	</File>
 	<File name="src/wx_std.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="1652" topLine="0" />

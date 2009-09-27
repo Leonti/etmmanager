@@ -88,12 +88,13 @@ prog_set -> set_now = set_now;
 prog_set -> fill_all();
 	Notebook1->AddPage(prog_set, _("Program settings"));
 
+/* old mysql backup system - not needed anymore :)
 prog_set_adv = new prog_set_panel_adv(Notebook1);
 prog_set_adv -> confi = confi;
 prog_set_adv -> set_now = set_now;
 prog_set_adv -> fill_all();
 	Notebook1->AddPage(prog_set_adv, _("Advanced settings"));
-
+*/
 //	SetSizer(FlexGridSizer1);
 	FlexGridSizer1->Fit(this);
     }

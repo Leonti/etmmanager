@@ -42,7 +42,7 @@ prog_set_panel::prog_set_panel(wxWindow* parent,wxWindowID id,const wxPoint& pos
 	wxFlexGridSizer* FlexGridSizer1;
 	wxFlexGridSizer* FlexGridSizer2;
 	wxFlexGridSizer* FlexGridSizer4;
-
+	
 	Create(parent, id, wxDefaultPosition, wxSize(290,229), wxTAB_TRAVERSAL, _T("id"));
 	FlexGridSizer1 = new wxFlexGridSizer(3, 0, 0, 0);
 	StaticBoxSizer2 = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Appearance"));

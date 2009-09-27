@@ -42,7 +42,7 @@ prog_set_panel_adv::prog_set_panel_adv(wxWindow* parent,wxWindowID id,const wxPo
 	wxFlexGridSizer* FlexGridSizer2;
 	wxFlexGridSizer* FlexGridSizer3;
 	wxStaticBoxSizer* StaticBoxSizer1;
-
+	
 	Create(parent, id, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("id"));
 	FlexGridSizer1 = new wxFlexGridSizer(3, 0, 0, 0);
 	StaticBoxSizer1 = new wxStaticBoxSizer(wxHORIZONTAL, this, _("File pathes:"));
@@ -61,7 +61,7 @@ prog_set_panel_adv::prog_set_panel_adv(wxWindow* parent,wxWindowID id,const wxPo
 	SetSizer(FlexGridSizer1);
 	FlexGridSizer1->Fit(this);
 	FlexGridSizer1->SetSizeHints(this);
-
+	
 	Connect(ID_CHECKBOX1,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&prog_set_panel_adv::OnCheckBox1Click);
 	//*)
 	DirPickerCtrl1->Enable(false);

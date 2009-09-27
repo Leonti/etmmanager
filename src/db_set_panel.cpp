@@ -128,7 +128,7 @@ if(conn->create_db(wx2std(TextCtrl4->GetValue(),wxConvUI).c_str()) &&
         wxStandardPaths path;
 wxFileName tableName;
 tableName.Assign(path.GetDataDir(),_T("table_schema.sql"));
-        result = restore_table(confi, TextCtrl1->GetValue(), TextCtrl2->GetValue(), TextCtrl3->GetValue(), TextCtrl4->GetValue(), tableName.GetFullPath());
+        result = restoreFromDump(conn, tableName.GetFullPath());
         if(result == 0){
             wxMessageBox(_("Database was created, but the structure was not restored."));
             }

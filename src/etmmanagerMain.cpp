@@ -940,20 +940,19 @@ bool etmmanagerFrame::printTable(wxString& htmlTable){
     wxHtmlEasyPrinting* print = new wxHtmlEasyPrinting();
 if(print->PrintText( htmlTable )){
 return 1;
-}
+}else
+return 0;
 }
 
 void etmmanagerFrame::checkUpdateDB(){
+    bool message = false;
+    //checking for 0.5.0 database
     mysqlpp::Query query = conn -> query();
     query << "SHOW TABLES";
     mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
         if( res.num_rows() == 4){ //that means we have old database version - we need to add new tables:
-
-
-
-
 query << "CREATE TABLE IF NOT EXISTS `contracts` (\
   `id` int(11) NOT NULL auto_increment,\
   `week_starts` int(11) NOT NULL,\
@@ -972,10 +971,24 @@ query.execute();
 query << "ALTER TABLE `employees` ADD `contract_id` INT NOT NULL DEFAULT '0' AFTER `emp_ssn`";
 query.execute();
 
-wxMessageBox(_("Database was updated!"));
+message = true;
         }
 
         }
+ //checking for 0.6.1 database
+    query << "SELECT * FROM `employees` LIMIT 1";
+    res = query.store();
+
+    if(res){
+    if(res.field_names()->size() == 5){
+        query << "ALTER TABLE `employees` ADD `photo` longblob NOT NULL AFTER `emp_comment`";
+        query.execute();
+message = true;
+    }
+    }
+    if(message){
+    wxMessageBox(_("Database was updated!"));
+    }
     }
 
 void etmmanagerFrame::OnButton2Click1(wxCommandEvent& event){

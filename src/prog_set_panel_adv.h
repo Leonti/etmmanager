@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -31,35 +31,35 @@
 
 class prog_set_panel_adv: public wxPanel
 {
-	public:
+public:
 
-		prog_set_panel_adv(wxWindow* parent,wxWindowID id=wxID_ANY,const wxPoint& pos=wxDefaultPosition,const wxSize& size=wxDefaultSize);
-		virtual ~prog_set_panel_adv();
+    prog_set_panel_adv(wxWindow* parent,wxWindowID id=wxID_ANY,const wxPoint& pos=wxDefaultPosition,const wxSize& size=wxDefaultSize);
+    virtual ~prog_set_panel_adv();
 
-		//(*Declarations(prog_set_panel_adv)
-		wxCheckBox* CheckBox1;
-		wxStaticText* StaticText1;
-		wxDirPickerCtrl* DirPickerCtrl1;
-		//*)
-		current_settings* set_now;
-        wxConfigBase *confi;
-		void fill_all(void);
-		void Save(void);
-	protected:
+    //(*Declarations(prog_set_panel_adv)
+    wxCheckBox* CheckBox1;
+    wxStaticText* StaticText1;
+    wxDirPickerCtrl* DirPickerCtrl1;
+    //*)
+    current_settings* set_now;
+    wxConfigBase *confi;
+    void fill_all(void);
+    void Save(void);
+protected:
 
-		//(*Identifiers(prog_set_panel_adv)
-		static const long ID_CHECKBOX1;
-		static const long ID_STATICTEXT1;
-		static const long ID_CUSTOM1;
-		//*)
+    //(*Identifiers(prog_set_panel_adv)
+    static const long ID_CHECKBOX1;
+    static const long ID_STATICTEXT1;
+    static const long ID_CUSTOM1;
+    //*)
 
-	private:
+private:
 
-		//(*Handlers(prog_set_panel_adv)
-		void OnCheckBox1Click(wxCommandEvent& event);
-		//*)
+    //(*Handlers(prog_set_panel_adv)
+    void OnCheckBox1Click(wxCommandEvent& event);
+    //*)
 
-		DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE()
 };
 
 #endif

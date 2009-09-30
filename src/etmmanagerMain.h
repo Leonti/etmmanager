@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -55,31 +55,34 @@
 #include "version.h"
 #include <wx/html/htmprint.h>
 
-struct diffs{
-wxTimeSpan duration;
-int job_id;
-bool isEmpty;
-    };
-struct jobInfo{
-wxString Name;
-double Wage;
-    };
-struct limits{
-int weekStarts;
-double dayLimit;
-double weekLimit;
-double multiplier;
-    };
+struct diffs
+{
+    wxTimeSpan duration;
+    int job_id;
+    bool isEmpty;
+};
+struct jobInfo
+{
+    wxString Name;
+    double Wage;
+};
+struct limits
+{
+    int weekStarts;
+    double dayLimit;
+    double weekLimit;
+    double multiplier;
+};
 WX_DECLARE_OBJARRAY(diffs, diffsArray);
 class etmmanagerFrame: public wxFrame
 {
-    public:
+public:
 
-        etmmanagerFrame(wxWindow* parent,wxWindowID id = -1);
-        virtual ~etmmanagerFrame();
+    etmmanagerFrame(wxWindow* parent,wxWindowID id = -1);
+    virtual ~etmmanagerFrame();
 
-        wxConfigBase *config;
-        int connect_to_db(void);
+    wxConfigBase *config;
+    int connect_to_db(void);
 
     mysqlpp::Connection * conn;
     wxString host;
@@ -88,123 +91,123 @@ class etmmanagerFrame: public wxFrame
     wxString dbase;
     bool dbase_connected;
 
-    private:
+private:
 
-        //(*Handlers(etmmanagerFrame)
-        void OnQuit(wxCommandEvent& event);
-        void OnAbout(wxCommandEvent& event);
-        void OnMenuItem5Selected(wxCommandEvent& event);
-        void OnMenuItem3Selected(wxCommandEvent& event);
-        void OnChoice1Select(wxCommandEvent& event);
-        void OnDatePickerCtrl1Changed(wxDateEvent& event);
-        void OnDatePickerCtrl1Changed1(wxDateEvent& event);
-        void OnButton1Click(wxCommandEvent& event);
-        void OnGrid1CellLeftClick(wxGridEvent& event);
-        void OnGrid1LabelLeftDClick(wxGridEvent& event);
-        void OnButton2Click(wxCommandEvent& event);
-        void OnMakeBackupMenu(wxCommandEvent& event);
-        void OnRestoreFromBackupMenu(wxCommandEvent& event);
-        void OnInstallStructureMenu(wxCommandEvent& event);
-        void OnEditLimits(wxCommandEvent& event);
-        void OnButton2Click1(wxCommandEvent& event);
-        //*)
+    //(*Handlers(etmmanagerFrame)
+    void OnQuit(wxCommandEvent& event);
+    void OnAbout(wxCommandEvent& event);
+    void OnMenuItem5Selected(wxCommandEvent& event);
+    void OnMenuItem3Selected(wxCommandEvent& event);
+    void OnChoice1Select(wxCommandEvent& event);
+    void OnDatePickerCtrl1Changed(wxDateEvent& event);
+    void OnDatePickerCtrl1Changed1(wxDateEvent& event);
+    void OnButton1Click(wxCommandEvent& event);
+    void OnGrid1CellLeftClick(wxGridEvent& event);
+    void OnGrid1LabelLeftDClick(wxGridEvent& event);
+    void OnButton2Click(wxCommandEvent& event);
+    void OnMakeBackupMenu(wxCommandEvent& event);
+    void OnRestoreFromBackupMenu(wxCommandEvent& event);
+    void OnInstallStructureMenu(wxCommandEvent& event);
+    void OnEditLimits(wxCommandEvent& event);
+    void OnButton2Click1(wxCommandEvent& event);
+    //*)
 
-        //(*Identifiers(etmmanagerFrame)
-        static const long ID_DATEPICKERCTRL1;
-        static const long ID_DATEPICKERCTRL2;
-        static const long ID_BUTTON1;
-        static const long ID_CHOICE1;
-        static const long ID_STATICTEXT1;
-        static const long ID_STATICTEXT5;
-        static const long ID_STATICTEXT2;
-        static const long ID_STATICTEXT6;
-        static const long ID_STATICTEXT3;
-        static const long ID_STATICTEXT7;
-        static const long ID_STATICTEXT4;
-        static const long ID_STATICTEXT8;
-        static const long ID_STATICTEXT9;
-        static const long ID_STATICTEXT16;
-        static const long ID_STATICTEXT17;
-        static const long ID_STATICTEXT10;
-        static const long ID_STATICTEXT11;
-        static const long ID_STATICTEXT12;
-        static const long ID_STATICTEXT13;
-        static const long ID_STATICTEXT14;
-        static const long ID_STATICTEXT15;
-        static const long ID_PANEL1;
-        static const long ID_GRID2;
-        static const long ID_GRID1;
-        static const long ID_BUTTON2;
-        static const long ID_MENUITEM4;
-        static const long ID_MENUITEM5;
-        static const long ID_MENUITEM1;
-        static const long idMenuQuit;
-        static const long ID_MENUITEM2;
-        static const long ID_MENUITEM6;
-        static const long ID_MENUITEM3;
-        static const long idMenuAbout;
-        static const long ID_STATUSBAR1;
-        //*)
+    //(*Identifiers(etmmanagerFrame)
+    static const long ID_DATEPICKERCTRL1;
+    static const long ID_DATEPICKERCTRL2;
+    static const long ID_BUTTON1;
+    static const long ID_CHOICE1;
+    static const long ID_STATICTEXT1;
+    static const long ID_STATICTEXT5;
+    static const long ID_STATICTEXT2;
+    static const long ID_STATICTEXT6;
+    static const long ID_STATICTEXT3;
+    static const long ID_STATICTEXT7;
+    static const long ID_STATICTEXT4;
+    static const long ID_STATICTEXT8;
+    static const long ID_STATICTEXT9;
+    static const long ID_STATICTEXT16;
+    static const long ID_STATICTEXT17;
+    static const long ID_STATICTEXT10;
+    static const long ID_STATICTEXT11;
+    static const long ID_STATICTEXT12;
+    static const long ID_STATICTEXT13;
+    static const long ID_STATICTEXT14;
+    static const long ID_STATICTEXT15;
+    static const long ID_PANEL1;
+    static const long ID_GRID2;
+    static const long ID_GRID1;
+    static const long ID_BUTTON2;
+    static const long ID_MENUITEM4;
+    static const long ID_MENUITEM5;
+    static const long ID_MENUITEM1;
+    static const long idMenuQuit;
+    static const long ID_MENUITEM2;
+    static const long ID_MENUITEM6;
+    static const long ID_MENUITEM3;
+    static const long idMenuAbout;
+    static const long ID_STATUSBAR1;
+    //*)
 
-        //(*Declarations(etmmanagerFrame)
-        wxStaticText* dayLimit;
-        wxPanel* Panel1;
-        wxStatusBar* StatusBar1;
-        wxStaticText* comment_txt;
-        wxStaticText* weekLimit;
-        wxMenu* Menu3;
-        wxGrid* Grid1;
-        wxButton* Button1;
-        wxButton* Button2;
-        wxStaticText* weekStarts;
-        wxStaticText* StaticText1;
-        wxStaticText* StaticText10;
-        wxDatePickerCtrl* DatePickerCtrl2;
-        wxStaticText* StaticText3;
-        wxStaticText* code_static;
-        wxMenuItem* MenuItem3;
-        wxFlexGridSizer* FlexGridSizer3;
-        wxChoice* Choice1;
-        wxStaticText* StaticText8;
-        wxMenu* Menu4;
-        wxStaticText* StaticText7;
-        wxStaticText* name_static;
-        wxMenuItem* MenuItem5;
-        wxStaticText* StaticText4;
-        wxStaticText* multiplier;
-        wxStaticText* StaticText5;
-        wxStaticText* StaticText2;
-        wxGrid* Grid2;
-        wxMenuItem* MenuItem4;
-        wxMenuItem* MenuItem7;
-        wxMenuItem* MenuItem6;
-        wxStaticText* StaticText6;
-        wxStaticText* jobs_txt;
-        wxMenuItem* MenuItem8;
-        wxDatePickerCtrl* DatePickerCtrl1;
-        //*)
-        void refresh_workers(void);
-        void emp_info(void);
-        void write_row(int n, wxString first_t, wxString second_t, wxString& job_n, double diff, double wage, double to_pay, bool colour = false);
-        wxArrayInt workers_ids;
-        current_settings set_now;
-        void read_settings(void);
-        wxArrayString dates;
-        wxArrayInt dates_ceros;
-        diffsArray diffesArr;
-        jobInfo getJob(int jobId);
-        void writeEmptyRow(int n);
-        void clearGridLabels(void);
-        void myClearGrid(void);
-        wxString vers;
-        limits ovLimits;
+    //(*Declarations(etmmanagerFrame)
+    wxStaticText* dayLimit;
+    wxPanel* Panel1;
+    wxStatusBar* StatusBar1;
+    wxStaticText* comment_txt;
+    wxStaticText* weekLimit;
+    wxMenu* Menu3;
+    wxGrid* Grid1;
+    wxButton* Button1;
+    wxButton* Button2;
+    wxStaticText* weekStarts;
+    wxStaticText* StaticText1;
+    wxStaticText* StaticText10;
+    wxDatePickerCtrl* DatePickerCtrl2;
+    wxStaticText* StaticText3;
+    wxStaticText* code_static;
+    wxMenuItem* MenuItem3;
+    wxFlexGridSizer* FlexGridSizer3;
+    wxChoice* Choice1;
+    wxStaticText* StaticText8;
+    wxMenu* Menu4;
+    wxStaticText* StaticText7;
+    wxStaticText* name_static;
+    wxMenuItem* MenuItem5;
+    wxStaticText* StaticText4;
+    wxStaticText* multiplier;
+    wxStaticText* StaticText5;
+    wxStaticText* StaticText2;
+    wxGrid* Grid2;
+    wxMenuItem* MenuItem4;
+    wxMenuItem* MenuItem7;
+    wxMenuItem* MenuItem6;
+    wxStaticText* StaticText6;
+    wxStaticText* jobs_txt;
+    wxMenuItem* MenuItem8;
+    wxDatePickerCtrl* DatePickerCtrl1;
+    //*)
+    void refresh_workers(void);
+    void emp_info(void);
+    void write_row(int n, wxString first_t, wxString second_t, wxString& job_n, double diff, double wage, double to_pay, bool colour = false);
+    wxArrayInt workers_ids;
+    current_settings set_now;
+    void read_settings(void);
+    wxArrayString dates;
+    wxArrayInt dates_ceros;
+    diffsArray diffesArr;
+    jobInfo getJob(int jobId);
+    void writeEmptyRow(int n);
+    void clearGridLabels(void);
+    void myClearGrid(void);
+    wxString vers;
+    limits ovLimits;
 
-        wxLocale Locale;
-        void readSet(void);
-        void checkUpdateDB();
-        bool printTable(wxString&);
+    wxLocale Locale;
+    void readSet(void);
+    void checkUpdateDB();
+    bool printTable(wxString&);
 
-        DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE()
 };
 
 #endif // ETMMANAGERMAIN_H

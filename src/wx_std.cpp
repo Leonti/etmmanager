@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -21,18 +21,18 @@
 
 wxString std2wx(const std::string& input, wxMBConv* conv)
 {
-     if (input.empty())
-         return wxEmptyString;
-     if (!conv)
-         conv = wxConvCurrent;
-     return wxString(input.c_str(), *conv);
+    if (input.empty())
+        return wxEmptyString;
+    if (!conv)
+        conv = wxConvCurrent;
+    return wxString(input.c_str(), *conv);
 }
 
 std::string wx2std(const wxString& input, wxMBConv* conv)
 {
-     if (input.empty())
-         return "";
-     if (!conv)
-         conv = wxConvCurrent;
-     return std::string(input.mb_str(*conv));
+    if (input.empty())
+        return "";
+    if (!conv)
+        conv = wxConvCurrent;
+    return std::string(input.mb_str(*conv));
 }

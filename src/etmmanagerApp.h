@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -25,8 +25,8 @@
 
 class etmmanagerApp : public wxApp
 {
-    public:
-        virtual bool OnInit();
+public:
+    virtual bool OnInit();
 };
 
 #endif // ETMMANAGERAPP_H

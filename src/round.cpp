@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -18,7 +18,8 @@
 *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA    *
 *************************************************************************************/
 #include "round.h"
-double round_2 (double in){
+double round_2 (double in)
+{
     //7.956
     in = in*100; //795.6
     in = in + .5; //796.1
@@ -26,4 +27,4 @@ double round_2 (double in){
     double out = trunk;
     out = out/100;
     return out;
-    }
+}

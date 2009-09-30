@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -29,48 +29,49 @@
 #include <wx/config.h>
 #include <wx/msgdlg.h>
 
-struct current_settings{
+struct current_settings
+{
     int lang;
     wxString mysqlBin;
     bool useBin;
-    };
+};
 
 
 class prog_set_panel: public wxPanel
 {
-	public:
+public:
 
-		prog_set_panel(wxWindow* parent,wxWindowID id=wxID_ANY,const wxPoint& pos=wxDefaultPosition,const wxSize& size=wxDefaultSize);
-		virtual ~prog_set_panel();
+    prog_set_panel(wxWindow* parent,wxWindowID id=wxID_ANY,const wxPoint& pos=wxDefaultPosition,const wxSize& size=wxDefaultSize);
+    virtual ~prog_set_panel();
 
-		//(*Declarations(prog_set_panel)
-		wxChoice* Choice2;
-		wxStaticText* StaticText5;
-		wxStaticText* StaticText6;
-		//*)
-		current_settings* set_now;
-        wxConfigBase *confi;
-		void fill_all(void);
-		void Save(void);
+    //(*Declarations(prog_set_panel)
+    wxChoice* Choice2;
+    wxStaticText* StaticText5;
+    wxStaticText* StaticText6;
+    //*)
+    current_settings* set_now;
+    wxConfigBase *confi;
+    void fill_all(void);
+    void Save(void);
 
-	protected:
+protected:
 
-		//(*Identifiers(prog_set_panel)
-		static const long ID_STATICTEXT6;
-		static const long ID_CHOICE2;
-		static const long ID_STATICTEXT5;
-		//*)
+    //(*Identifiers(prog_set_panel)
+    static const long ID_STATICTEXT6;
+    static const long ID_CHOICE2;
+    static const long ID_STATICTEXT5;
+    //*)
 
-	private:
+private:
 
-		//(*Handlers(prog_set_panel)
-		void OnCheckBox1Click(wxCommandEvent& event);
-		void OnCheckBox2Click(wxCommandEvent& event);
-		void OnCheckBox3Click(wxCommandEvent& event);
-		//*)
-		wxArrayInt langs;
+    //(*Handlers(prog_set_panel)
+    void OnCheckBox1Click(wxCommandEvent& event);
+    void OnCheckBox2Click(wxCommandEvent& event);
+    void OnCheckBox3Click(wxCommandEvent& event);
+    //*)
+    wxArrayInt langs;
 
-		DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE()
 };
 
 #endif

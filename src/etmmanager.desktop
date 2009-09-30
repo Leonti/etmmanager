@@ -1,6 +1,4 @@
 [Desktop Entry]
-X-SuSE-translate=true
-Categories=Application;Utility;X-SuSE-TimeUtility;
 Comment=ETM Manager for time logging
 Exec=etmmanager
 Name=ETM Manager
@@ -9,3 +7,5 @@ Icon=etmmanager
 StartupNotify=true
 Terminal=false
 Type=Application
+Categories=Utility;X-SuSE-TimeUtility;
+X-SuSE-translate=false

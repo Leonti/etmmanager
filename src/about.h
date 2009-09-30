@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -32,70 +32,70 @@
 
 class about: public wxDialog
 {
-	public:
+public:
 
-		about(wxWindow* parent,wxWindowID id=wxID_ANY,const wxPoint& pos=wxDefaultPosition,const wxSize& size=wxDefaultSize);
-		virtual ~about();
+    about(wxWindow* parent,wxWindowID id=wxID_ANY,const wxPoint& pos=wxDefaultPosition,const wxSize& size=wxDefaultSize);
+    virtual ~about();
 
-		//(*Declarations(about)
-		wxPanel* Panel1;
-		wxStaticText* StaticText13;
-		wxStaticText* StaticText14;
-		wxStaticText* StaticText15;
-		wxButton* Button1;
-		wxStaticText* StaticText1;
-		wxStaticText* StaticText10;
-		wxPanel* Panel2;
-		wxStaticText* StaticText3;
-		wxStaticLine* StaticLine1;
-		wxStaticText* StaticText8;
-		wxStaticText* StaticText12;
-		wxStaticLine* StaticLine3;
-		wxStaticText* StaticText7;
-		wxStaticText* StaticText4;
-		wxStaticText* StaticText5;
-		wxStaticText* StaticText2;
-		wxNotebook* Notebook1;
-		wxStaticText* StaticText6;
-		wxStaticLine* StaticLine4;
-		wxStaticText* StaticText9;
-		wxStaticText* StaticText11;
-		//*)
+    //(*Declarations(about)
+    wxPanel* Panel1;
+    wxStaticText* StaticText13;
+    wxStaticText* StaticText14;
+    wxStaticText* StaticText15;
+    wxButton* Button1;
+    wxStaticText* StaticText1;
+    wxStaticText* StaticText10;
+    wxPanel* Panel2;
+    wxStaticText* StaticText3;
+    wxStaticLine* StaticLine1;
+    wxStaticText* StaticText8;
+    wxStaticText* StaticText12;
+    wxStaticLine* StaticLine3;
+    wxStaticText* StaticText7;
+    wxStaticText* StaticText4;
+    wxStaticText* StaticText5;
+    wxStaticText* StaticText2;
+    wxNotebook* Notebook1;
+    wxStaticText* StaticText6;
+    wxStaticLine* StaticLine4;
+    wxStaticText* StaticText9;
+    wxStaticText* StaticText11;
+    //*)
 
-	protected:
+protected:
 
-		//(*Identifiers(about)
-		static const long ID_STATICTEXT1;
-		static const long ID_STATICTEXT2;
-		static const long ID_STATICLINE3;
-		static const long ID_STATICTEXT3;
-		static const long ID_STATICTEXT8;
-		static const long ID_STATICTEXT9;
-		static const long ID_STATICLINE4;
-		static const long ID_STATICTEXT4;
-		static const long ID_STATICTEXT5;
-		static const long ID_STATICTEXT6;
-		static const long ID_STATICTEXT7;
-		static const long ID_STATICLINE1;
-		static const long ID_PANEL2;
-		static const long ID_STATICTEXT10;
-		static const long ID_STATICTEXT11;
-		static const long ID_STATICTEXT12;
-		static const long ID_STATICTEXT13;
-		static const long ID_STATICTEXT14;
-		static const long ID_STATICTEXT15;
-		static const long ID_PANEL1;
-		static const long ID_NOTEBOOK1;
-		static const long ID_BUTTON1;
-		//*)
+    //(*Identifiers(about)
+    static const long ID_STATICTEXT1;
+    static const long ID_STATICTEXT2;
+    static const long ID_STATICLINE3;
+    static const long ID_STATICTEXT3;
+    static const long ID_STATICTEXT8;
+    static const long ID_STATICTEXT9;
+    static const long ID_STATICLINE4;
+    static const long ID_STATICTEXT4;
+    static const long ID_STATICTEXT5;
+    static const long ID_STATICTEXT6;
+    static const long ID_STATICTEXT7;
+    static const long ID_STATICLINE1;
+    static const long ID_PANEL2;
+    static const long ID_STATICTEXT10;
+    static const long ID_STATICTEXT11;
+    static const long ID_STATICTEXT12;
+    static const long ID_STATICTEXT13;
+    static const long ID_STATICTEXT14;
+    static const long ID_STATICTEXT15;
+    static const long ID_PANEL1;
+    static const long ID_NOTEBOOK1;
+    static const long ID_BUTTON1;
+    //*)
 
-	private:
+private:
 
-		//(*Handlers(about)
-		void OnButton1Click(wxCommandEvent& event);
-		//*)
+    //(*Handlers(about)
+    void OnButton1Click(wxCommandEvent& event);
+    //*)
 
-		DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE()
 };
 
 #endif

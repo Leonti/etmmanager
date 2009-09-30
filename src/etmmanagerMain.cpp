@@ -1,7 +1,7 @@
 /*************************************************************************************
 *  ETM Manager - works with the time data from the Mysql database. Part of           *
 *  ETM (Employee Time Management) project.                                           *
-*  Copyright (C) 2008  Leonti Bielski                                                *
+*  Copyright (C) 2009  Leonti Bielski                                                *
 *                                                                                    *
 *  This program is free software; you can redistribute it and/or modify              *
 *  it under the terms of the GNU General Public License as published by              *
@@ -35,8 +35,10 @@
 WX_DEFINE_OBJARRAY(diffsArray);
 
 //helper functions
-enum wxbuildinfoformat {
-    short_f, long_f };
+enum wxbuildinfoformat
+{
+    short_f, long_f
+};
 
 wxString wxbuildinfo(wxbuildinfoformat format)
 {
@@ -106,7 +108,7 @@ END_EVENT_TABLE()
 
 etmmanagerFrame::etmmanagerFrame(wxWindow* parent,wxWindowID id)
 {
-readSet();
+    readSet();
 
     vers << AutoVersion::MAJOR << _T(".") << AutoVersion::MINOR << _T(".") << AutoVersion::BUILD;
     //(*Initialize(etmmanagerFrame)
@@ -123,9 +125,9 @@ readSet();
     Create(parent, wxID_ANY, _("ETM manager"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
     SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_MENU));
     {
-    	wxIcon FrameIcon;
-    	FrameIcon.CopyFromBitmap(wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_NORMAL_FILE")),wxART_FRAME_ICON));
-    	SetIcon(FrameIcon);
+        wxIcon FrameIcon;
+        FrameIcon.CopyFromBitmap(wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_NORMAL_FILE")),wxART_FRAME_ICON));
+        SetIcon(FrameIcon);
     }
     FlexGridSizer1 = new wxFlexGridSizer(0, 2, 0, 0);
     FlexGridSizer2 = new wxFlexGridSizer(4, 1, 0, 0);
@@ -260,7 +262,7 @@ readSet();
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&etmmanagerFrame::OnAbout);
     //*)
 
-SetTitle(_T("ETM manager ") + vers);
+    SetTitle(_T("ETM manager ") + vers);
 
 
     dbase_connected = false;
@@ -270,74 +272,79 @@ SetTitle(_T("ETM manager ") + vers);
     connect_to_db();
 
 //doing grids
-Grid1->SetColLabelValue(0,_("Time In"));
-Grid1->SetColLabelValue(1,_("Time Out"));
-Grid1->SetColLabelValue(2,_("Job"));
-Grid1->SetColLabelValue(3,_("Duration"));
-Grid1->SetColLabelValue(4,_("Wage"));
-Grid1->SetColLabelValue(5,_("To pay"));
+    Grid1->SetColLabelValue(0,_("Time In"));
+    Grid1->SetColLabelValue(1,_("Time Out"));
+    Grid1->SetColLabelValue(2,_("Job"));
+    Grid1->SetColLabelValue(3,_("Duration"));
+    Grid1->SetColLabelValue(4,_("Wage"));
+    Grid1->SetColLabelValue(5,_("To pay"));
 
-Grid1->SetRowLabelSize(85);
-Grid1->SetColSize(0,90);
-Grid1->SetColSize(1,90);
-Grid1->SetColSize(2,100);
-Grid1->SetColSize(3,70);
-Grid1->SetColSize(4,50);
-Grid1->SetColSize(5,60);
+    Grid1->SetRowLabelSize(85);
+    Grid1->SetColSize(0,90);
+    Grid1->SetColSize(1,90);
+    Grid1->SetColSize(2,100);
+    Grid1->SetColSize(3,70);
+    Grid1->SetColSize(4,50);
+    Grid1->SetColSize(5,60);
 
 //Grid1->AutoSizeColumns();
-Grid1->EnableEditing(false);
+    Grid1->EnableEditing(false);
 
-Grid2->SetColLabelValue(0,_("Hours"));
-Grid2->SetColLabelValue(1,_("Earned"));
-Grid2->SetRowLabelValue(0,_("Regular Time:"));
-Grid2->SetRowLabelValue(1,_("Overtime:"));
-Grid2->SetRowLabelValue(2,_("Total Time:"));
-Grid2->SetRowLabelSize(120);
-Grid2->SetCellBackgroundColour(1,0,*wxRED);
-Grid2->SetCellBackgroundColour(1,1,*wxRED);
-Grid2->EnableEditing(false);
+    Grid2->SetColLabelValue(0,_("Hours"));
+    Grid2->SetColLabelValue(1,_("Earned"));
+    Grid2->SetRowLabelValue(0,_("Regular Time:"));
+    Grid2->SetRowLabelValue(1,_("Overtime:"));
+    Grid2->SetRowLabelValue(2,_("Total Time:"));
+    Grid2->SetRowLabelSize(120);
+    Grid2->SetCellBackgroundColour(1,0,*wxRED);
+    Grid2->SetCellBackgroundColour(1,1,*wxRED);
+    Grid2->EnableEditing(false);
 //end doing grids
 
 
-refresh_workers();
-DatePickerCtrl2->SetRange(DatePickerCtrl1->GetValue(),wxDateTime::Now());
-clearGridLabels();
+    refresh_workers();
+    DatePickerCtrl2->SetRange(DatePickerCtrl1->GetValue(),wxDateTime::Now());
+    clearGridLabels();
 }
 
-void etmmanagerFrame::readSet(void){
+void etmmanagerFrame::readSet(void)
+{
     set_now.useBin = false; //we don't use user-defined mysqldir by default
     conn = new mysqlpp::Connection(false);
 
     config = new wxConfig(_T("etmmanager"));
     set_now.lang = 0;
     wxString lng = config->Read(_T("program/lang"));
-    if(lng!=_T("")){
+    if(lng!=_T(""))
+    {
         long temp;
         lng.ToLong(&temp);
         set_now.lang = temp;
-        }
+    }
 
     if (config->Read(_T("/program/run")) !=_T("1") || config->Read(_T("/program/run_again")) == _T("1"))
     {
-    settings* set_dlg = new settings(this);
-    set_dlg -> confi = config;
-    set_dlg -> conn = conn;
-    set_dlg -> set_now = &set_now;
-    set_dlg -> fill_all();
-    set_dlg -> ShowModal();
-    delete set_dlg;
- }else{
-read_settings();
-     }
+        settings* set_dlg = new settings(this);
+        set_dlg -> confi = config;
+        set_dlg -> conn = conn;
+        set_dlg -> set_now = &set_now;
+        set_dlg -> fill_all();
+        set_dlg -> ShowModal();
+        delete set_dlg;
+    }
+    else
+    {
+        read_settings();
+    }
 
-if(set_now.lang != 0){
-Locale.Init(set_now.lang, wxLOCALE_CONV_ENCODING);
-wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
-                // Initialize the catalogs we'll be using
-Locale.AddCatalog(wxT("etmmanager"));
+    if(set_now.lang != 0)
+    {
+        Locale.Init(set_now.lang, wxLOCALE_CONV_ENCODING);
+        wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
+        // Initialize the catalogs we'll be using
+        Locale.AddCatalog(wxT("etmmanager"));
     }
-    }
+}
 
 
 int  etmmanagerFrame::connect_to_db(void)
@@ -385,18 +392,19 @@ void etmmanagerFrame::OnQuit(wxCommandEvent& event)
 
 void etmmanagerFrame::OnAbout(wxCommandEvent& event)
 {
-about* about_dlg = new about(this);
-about_dlg->Show();
+    about* about_dlg = new about(this);
+    about_dlg->Show();
 }
 
 void etmmanagerFrame::OnMenuItem5Selected(wxCommandEvent& event)
 {
-        settings* set_dlg = new settings(this);
+    settings* set_dlg = new settings(this);
     set_dlg -> confi = config;
-    if(dbase_connected == true){
-    set_dlg -> dbase_connected = true;
+    if(dbase_connected == true)
+    {
+        set_dlg -> dbase_connected = true;
     }
-        set_dlg -> conn = conn;
+    set_dlg -> conn = conn;
     set_dlg -> set_now = &set_now;
     set_dlg -> fill_all();
     set_dlg -> ShowModal();
@@ -410,19 +418,20 @@ void etmmanagerFrame::OnMenuItem5Selected(wxCommandEvent& event)
     {
         connect_to_db();
     }
-read_settings();
-refresh_workers();
+    read_settings();
+    refresh_workers();
 }
 
 void etmmanagerFrame::OnMenuItem3Selected(wxCommandEvent& event)
 {
-workers* work_dlg = new workers(this);
-work_dlg -> conn_workers = conn;
-work_dlg -> fill_all();
-work_dlg -> ShowModal();
-refresh_workers();
+    workers* work_dlg = new workers(this);
+    work_dlg -> conn_workers = conn;
+    work_dlg -> fill_all();
+    work_dlg -> ShowModal();
+    refresh_workers();
 }
-void etmmanagerFrame::refresh_workers(){
+void etmmanagerFrame::refresh_workers()
+{
     Choice1 -> Clear();
     name_static->SetLabel(_T(""));
     code_static->SetLabel(_T(""));
@@ -439,27 +448,30 @@ void etmmanagerFrame::refresh_workers(){
     mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
-mysqlpp::Row row;
-mysqlpp::StoreQueryResult::size_type i;
-for (i = 0; i < res.num_rows(); ++i) {
-  row = res[i];
+        mysqlpp::Row row;
+        mysqlpp::StoreQueryResult::size_type i;
+        for (i = 0; i < res.num_rows(); ++i)
+        {
+            row = res[i];
             std::string work_name = std::string(row["emp_name"]);
             Choice1->Append(std2wx(work_name, wxConvUI));
             workers_ids.Add(int(row["emp_id"]));
         }
     }
 
-Choice1->SetSelection(0);
-emp_info();
-    }
+    Choice1->SetSelection(0);
+    emp_info();
+}
 
-void etmmanagerFrame::emp_info(){
+void etmmanagerFrame::emp_info()
+{
     ovLimits.dayLimit = 0;
     ovLimits.multiplier = 0;
     ovLimits.weekLimit = 0;
     ovLimits.weekStarts = 0;
 
-    if(workers_ids.GetCount() != 0){
+    if(workers_ids.GetCount() != 0)
+    {
 
         int contractId = 0;
         mysqlpp::Query query = conn->query();
@@ -477,27 +489,32 @@ void etmmanagerFrame::emp_info(){
 
         query << "SELECT * FROM `emp_jobs` WHERE `emp_id`=" << workers_ids[Choice1 -> GetSelection()];
         res = query.store();
-        if (res){
+        if (res)
+        {
             wxString jobs;
-mysqlpp::Row row;
-mysqlpp::StoreQueryResult::size_type i;
-for (i = 0; i < res.num_rows(); ++i) {
-  row = res[i];
-            query << "SELECT `job_title` FROM `jobs` WHERE `job_id`='"<< int(row["job_id"]) <<"' LIMIT 1";
-            mysqlpp::StoreQueryResult res2 = query.store();
-            mysqlpp::Row row2 = res2.at(0);
-            jobs << std2wx(std::string(row2["job_title"]), wxConvUI) << _T("\n");
-
-        }
-            jobs_txt -> SetLabel(jobs);
+            mysqlpp::Row row;
+            mysqlpp::StoreQueryResult::size_type i;
+            for (i = 0; i < res.num_rows(); ++i)
+            {
+                row = res[i];
+                query << "SELECT `job_title` FROM `jobs` WHERE `job_id`='"<< int(row["job_id"]) <<"' LIMIT 1";
+                mysqlpp::StoreQueryResult res2 = query.store();
+                mysqlpp::Row row2 = res2.at(0);
+                jobs << std2wx(std::string(row2["job_title"]), wxConvUI) << _T("\n");
 
             }
+            jobs_txt -> SetLabel(jobs);
 
-            if(contractId !=0 ){
-        query << "SELECT * FROM `contracts` WHERE `id`='" << contractId << "' LIMIT 1";
-            }else{
-        query << "SELECT * FROM `contracts` WHERE `default`='1' LIMIT 1";
-                }
+        }
+
+        if(contractId !=0 )
+        {
+            query << "SELECT * FROM `contracts` WHERE `id`='" << contractId << "' LIMIT 1";
+        }
+        else
+        {
+            query << "SELECT * FROM `contracts` WHERE `default`='1' LIMIT 1";
+        }
         res = query.store();
         if (res)
         {
@@ -521,8 +538,8 @@ for (i = 0; i < res.num_rows(); ++i) {
 
 
 
-}
     }
+}
 
 void etmmanagerFrame::OnChoice1Select(wxCommandEvent& event)
 {
@@ -544,74 +561,85 @@ void etmmanagerFrame::OnButton1Click(wxCommandEvent& event)
     mysqlpp::Query query = conn->query();
     wxDateTime toPutDate = start_date;//we will need it later to fill out the grid
 
-int job_id_yesterday = 0;
+    int job_id_yesterday = 0;
 
 //getting info for the last entry of previous day
-wxDateTime mysql_yesterday = start_date;
-mysql_yesterday.Subtract(wxTimeSpan::Day());
-query << "SELECT * FROM `time` WHERE `time_time` > '"<< wx2std(mysql_yesterday.FormatISODate(),wxConvUI) <<"' AND `time_time` < '"<< wx2std(start_date.FormatISODate(),wxConvUI) <<"' AND `time_emp_id` = '"<< workers_ids[Choice1->GetSelection()] <<"' ORDER BY `time_time` DESC LIMIT 1";
-mysqlpp::StoreQueryResult res = query.store();
-if(res.num_rows() != 0){
-mysqlpp::Row row = res.at(0);
-job_id_yesterday = int(row["time_job_id"]);
+    wxDateTime mysql_yesterday = start_date;
+    mysql_yesterday.Subtract(wxTimeSpan::Day());
+    query << "SELECT * FROM `time` WHERE `time_time` > '"<< wx2std(mysql_yesterday.FormatISODate(),wxConvUI) <<"' AND `time_time` < '"<< wx2std(start_date.FormatISODate(),wxConvUI) <<"' AND `time_emp_id` = '"<< workers_ids[Choice1->GetSelection()] <<"' ORDER BY `time_time` DESC LIMIT 1";
+    mysqlpp::StoreQueryResult res = query.store();
+    if(res.num_rows() != 0)
+    {
+        mysqlpp::Row row = res.at(0);
+        job_id_yesterday = int(row["time_job_id"]);
     }
 
 
 
-    while(start_date <= end_date){
-    wxDateTime mysql_date = start_date; //we don't wannt to modify start date
-    mysql_date.Add(wxTimeSpan::Day());
-    query << "SELECT * FROM `time` WHERE `time_time` > '"<< wx2std(start_date.FormatISODate(),wxConvUI) <<"' AND `time_time` < '"<< wx2std(mysql_date.FormatISODate(),wxConvUI) <<"' AND `time_emp_id` = '"<< workers_ids[Choice1->GetSelection()] <<"' ORDER BY `time_time` ASC";
-    start_date = mysql_date; //after we've got info we can increase start date for one more day
+    while(start_date <= end_date)
+    {
+        wxDateTime mysql_date = start_date; //we don't wannt to modify start date
+        mysql_date.Add(wxTimeSpan::Day());
+        query << "SELECT * FROM `time` WHERE `time_time` > '"<< wx2std(start_date.FormatISODate(),wxConvUI) <<"' AND `time_time` < '"<< wx2std(mysql_date.FormatISODate(),wxConvUI) <<"' AND `time_emp_id` = '"<< workers_ids[Choice1->GetSelection()] <<"' ORDER BY `time_time` ASC";
+        start_date = mysql_date; //after we've got info we can increase start date for one more day
 
-    mysqlpp::StoreQueryResult res = query.store();
-         if (res){
-        diffs diffes;
-         if(res.num_rows() != 0) {//we have some entries for this day
-        mysqlpp::Row row0;
-mysqlpp::Row row;
-mysqlpp::StoreQueryResult::size_type i;
-for (i = 0; i < res.num_rows(); ++i) {
-  row = res[i];
-            if(i !=0){ //we are already on second or higher entry - can subtract previous time
-            row0 = res.at(i-1);
-            wxDateTime first_time;
-            wxDateTime second_time;
-            first_time.ParseDateTime(std2wx(std::string(row0["time_time"]), wxConvUI).c_str());
-            second_time.ParseDateTime(std2wx(std::string(row["time_time"]), wxConvUI).c_str());
+        mysqlpp::StoreQueryResult res = query.store();
+        if (res)
+        {
+            diffs diffes;
+            if(res.num_rows() != 0)  //we have some entries for this day
+            {
+                mysqlpp::Row row0;
+                mysqlpp::Row row;
+                mysqlpp::StoreQueryResult::size_type i;
+                for (i = 0; i < res.num_rows(); ++i)
+                {
+                    row = res[i];
+                    if(i !=0)  //we are already on second or higher entry - can subtract previous time
+                    {
+                        row0 = res.at(i-1);
+                        wxDateTime first_time;
+                        wxDateTime second_time;
+                        first_time.ParseDateTime(std2wx(std::string(row0["time_time"]), wxConvUI).c_str());
+                        second_time.ParseDateTime(std2wx(std::string(row["time_time"]), wxConvUI).c_str());
 
-            diffes.duration = second_time.Subtract(first_time);
-            diffes.job_id = row0["time_job_id"];
-            diffesArr.Add(diffes);
-                }else{ // i = 0 this is our first row - using job_id_yesterday getting info from 00:00:00 to the first entry
-                    wxDateTime beginning;
-                    beginning.ParseDateTime(std2wx(std::string(row["time_time"]), wxConvUI).c_str());
-                    wxDateTime ending = beginning;
-                    beginning.ResetTime();  //wxDateTime modyfies object when subtracting or adding values, so we have to copy them before
-                                            //beginning - 00:00:00 the same date
-                                            //ending - time of first entry - same day, job_id is job_id_yesterday
-                    diffes.duration = ending.Subtract(beginning);
-                    diffes.job_id = job_id_yesterday;
-                    diffes.isEmpty = false;
-                    diffesArr.Add(diffes);
+                        diffes.duration = second_time.Subtract(first_time);
+                        diffes.job_id = row0["time_job_id"];
+                        diffesArr.Add(diffes);
                     }
-             if(i == res.num_rows() - 1){ //this means this is the last entry for today
-                                        //i can be 0 - only one row(res.num_rows==1) or more - (res.num_rows > 1)
-                                        //we need this to get last job (in most cases it's OFF)
-                wxDateTime beginning;
-                beginning.ParseDateTime(std2wx(std::string(row["time_time"]), wxConvUI).c_str());
-                wxDateTime ending = beginning;
-                ending.Add(wxTimeSpan::Day());
-                ending.ResetTime();             //now we have beginning with the time of the last job
-                                                //and ending with the 00:00:00 of the next day
-                diffes.duration = ending.Subtract(beginning);
-                diffes.job_id = row["time_job_id"];
-                diffes.isEmpty = false;
-                diffesArr.Add(diffes);
-                job_id_yesterday = diffes.job_id;
+                    else   // i = 0 this is our first row - using job_id_yesterday getting info from 00:00:00 to the first entry
+                    {
+                        wxDateTime beginning;
+                        beginning.ParseDateTime(std2wx(std::string(row["time_time"]), wxConvUI).c_str());
+                        wxDateTime ending = beginning;
+                        beginning.ResetTime();  //wxDateTime modyfies object when subtracting or adding values, so we have to copy them before
+                        //beginning - 00:00:00 the same date
+                        //ending - time of first entry - same day, job_id is job_id_yesterday
+                        diffes.duration = ending.Subtract(beginning);
+                        diffes.job_id = job_id_yesterday;
+                        diffes.isEmpty = false;
+                        diffesArr.Add(diffes);
+                    }
+                    if(i == res.num_rows() - 1)  //this means this is the last entry for today
+                    {
+                        //i can be 0 - only one row(res.num_rows==1) or more - (res.num_rows > 1)
+                        //we need this to get last job (in most cases it's OFF)
+                        wxDateTime beginning;
+                        beginning.ParseDateTime(std2wx(std::string(row["time_time"]), wxConvUI).c_str());
+                        wxDateTime ending = beginning;
+                        ending.Add(wxTimeSpan::Day());
+                        ending.ResetTime();             //now we have beginning with the time of the last job
+                        //and ending with the 00:00:00 of the next day
+                        diffes.duration = ending.Subtract(beginning);
+                        diffes.job_id = row["time_job_id"];
+                        diffes.isEmpty = false;
+                        diffesArr.Add(diffes);
+                        job_id_yesterday = diffes.job_id;
+                    }
                 }
             }
-         }else{//we have empty days - res.num_rows == 0 - adding empty day to diffesArr
+            else  //we have empty days - res.num_rows == 0 - adding empty day to diffesArr
+            {
                 wxDateTime beginning = start_date;
                 wxDateTime ending = beginning;
                 ending.Add(wxTimeSpan::Day());
@@ -619,8 +647,8 @@ for (i = 0; i < res.num_rows(); ++i) {
                 diffes.job_id = job_id_yesterday; //this means that someone can work a copuple of days without logging out
                 diffes.isEmpty = true;
                 diffesArr.Add(diffes); //impossible in practice but for the consistency
-             }
-}
+            }
+        }
     }
 
 //at this point we should have array diffesArr filled with times and jobs without any holes - time to time
@@ -648,17 +676,19 @@ for (i = 0; i < res.num_rows(); ++i) {
     double toPayOvertime = 0;
 
     myClearGrid();
-start_date = toPutDate;
-int j = 0;
-bool same_day = true;
-wxString day_label;
+    start_date = toPutDate;
+    int j = 0;
+    bool same_day = true;
+    wxString day_label;
 
-    while(start_date < end_date){  //doing it again but this time filling the grid
+    while(start_date < end_date)   //doing it again but this time filling the grid
+    {
 //bool first_label = true;
 
-        if(start_date.GetWeekDay() == w_starts && !same_day){ //new week starts so reseting overtimes
-        hours_this_week = 0;
-        day_new_overtime = true;
+        if(start_date.GetWeekDay() == w_starts && !same_day)  //new week starts so reseting overtimes
+        {
+            hours_this_week = 0;
+            day_new_overtime = true;
         }
         double hours_this_day = 0;  //reseting hours for today
         bool hour_new_overtime = true;
@@ -667,146 +697,174 @@ wxString day_label;
 
 
 
-wxDateTime first = start_date;       //we could do it all first time but it's already complicated as it is ;)
-start_date.Add(diffesArr[j].duration);
-if(start_date.FormatISODate() == first.FormatISODate()){
-    same_day = true;
-    }else{
-    same_day = false;
+        wxDateTime first = start_date;       //we could do it all first time but it's already complicated as it is ;)
+        start_date.Add(diffesArr[j].duration);
+        if(start_date.FormatISODate() == first.FormatISODate())
+        {
+            same_day = true;
+        }
+        else
+        {
+            same_day = false;
         }
 
-if(diffesArr[j].isEmpty && diffesArr[j].job_id == 0){ //this means the whole day was day off
-writeEmptyRow(n);
-Grid1->SetRowLabelValue(n, first.FormatDate());
-dates.Add(first.FormatISODate());
-n++;
-    }else{ //filling day as usual
-        if(diffesArr[j].job_id != 0){ //we don't need row with OFF value
-if(first.FormatDate() != day_label){
-day_label = first.FormatDate();
-Grid1->SetRowLabelValue(n, day_label);
-dates.Add(first.FormatISODate());
-dates_ceros.Add(1);
-if(colour) colour = false; else colour = true;
-}else{
-Grid1->SetRowLabelValue(n, _T(""));
-dates_ceros.Add(0);
-    }
-
-jobInfo jobInf = getJob(diffesArr[j].job_id);
-double diff = diffesArr[j].duration.GetSeconds().ToDouble()/3600;
-hours_this_week += diff;
-hours_this_day += diff;
-double wage = jobInf.Wage;
-
-if(hours_this_week <= ov_week_limit && hours_this_day <= ov_day_limit){ //below the overtimes
-double to_pay = wage*diff;
-write_row(n, first.FormatTime(), start_date.FormatTime(), jobInf.Name, diff ,wage, to_pay,colour);
-toPayTotal += round_2(to_pay);
-regHoursTotal += round_2(diff);
-n++;
-}else{//overtime is on
-
-double brea_time;
-if(hours_this_week > ov_week_limit){
-     brea_time = hours_this_week - ov_week_limit;
-     }else{
-     brea_time = hours_this_day - ov_day_limit;
-         }
-
-bool divide_day = false;
-if(day_new_overtime && hours_this_week > ov_week_limit){
-    divide_day = true;
-    day_new_overtime = false;
-    }else if(hour_new_overtime && hours_this_day > ov_day_limit && hours_this_week <= ov_week_limit){
-    divide_day = true;
-    hour_new_overtime = false;
+        if(diffesArr[j].isEmpty && diffesArr[j].job_id == 0)  //this means the whole day was day off
+        {
+            writeEmptyRow(n);
+            Grid1->SetRowLabelValue(n, first.FormatDate());
+            dates.Add(first.FormatISODate());
+            n++;
         }
-wxDateTime first_time = first;
-wxDateTime second_time = start_date;
+        else   //filling day as usual
+        {
+            if(diffesArr[j].job_id != 0)  //we don't need row with OFF value
+            {
+                if(first.FormatDate() != day_label)
+                {
+                    day_label = first.FormatDate();
+                    Grid1->SetRowLabelValue(n, day_label);
+                    dates.Add(first.FormatISODate());
+                    dates_ceros.Add(1);
+                    if(colour) colour = false;
+                    else colour = true;
+                }
+                else
+                {
+                    Grid1->SetRowLabelValue(n, _T(""));
+                    dates_ceros.Add(0);
+                }
 
-if(divide_day){
-double t_p_normal = (diff - brea_time)*wage;
-wxTimeSpan ov_diff(0,0,((diff - brea_time)*3600),0);
-second_time = first_time;
-write_row(n, first_time.FormatTime(),second_time.Add(ov_diff).FormatTime(), jobInf.Name,(diff - brea_time), wage, t_p_normal, colour);
-toPayTotal += round_2(t_p_normal);
-regHoursTotal += round_2(diff - brea_time);
-n++;
+                jobInfo jobInf = getJob(diffesArr[j].job_id);
+                double diff = diffesArr[j].duration.GetSeconds().ToDouble()/3600;
+                hours_this_week += diff;
+                hours_this_day += diff;
+                double wage = jobInf.Wage;
 
-double t_p = brea_time*ov_wage*wage;
-wxTimeSpan ov_diff2(0,0,((brea_time)*3600),0);
-wxDateTime third_time = second_time;
-write_row(n, second_time.FormatTime(),third_time.Add(ov_diff2).FormatTime(), jobInf.Name, brea_time, (wage*ov_wage), t_p, colour);
-toPayOvertime += round_2(t_p);
-overtimeHoursTotal += round_2(brea_time);
-Grid1->SetRowLabelValue(n, _T(""));
-dates_ceros.Add(0);
-Grid1->SetCellBackgroundColour(n,5,*wxRED);
-n++;
-}else{
-double t_p = diff*ov_wage*wage;
-write_row(n, first_time.FormatTime(),second_time.FormatTime(), jobInf.Name, diff, (wage*ov_wage), t_p, colour);
-toPayOvertime += round_2(t_p);
-overtimeHoursTotal += round_2(diff);
-Grid1->SetCellBackgroundColour(n,5,*wxRED);
-n++;
-    }
+                if(hours_this_week <= ov_week_limit && hours_this_day <= ov_day_limit)  //below the overtimes
+                {
+                    double to_pay = wage*diff;
+                    write_row(n, first.FormatTime(), start_date.FormatTime(), jobInf.Name, diff ,wage, to_pay,colour);
+                    toPayTotal += round_2(to_pay);
+                    regHoursTotal += round_2(diff);
+                    n++;
+                }
+                else  //overtime is on
+                {
 
-    }
+                    double brea_time;
+                    if(hours_this_week > ov_week_limit)
+                    {
+                        brea_time = hours_this_week - ov_week_limit;
+                    }
+                    else
+                    {
+                        brea_time = hours_this_day - ov_day_limit;
+                    }
+
+                    bool divide_day = false;
+                    if(day_new_overtime && hours_this_week > ov_week_limit)
+                    {
+                        divide_day = true;
+                        day_new_overtime = false;
+                    }
+                    else if(hour_new_overtime && hours_this_day > ov_day_limit && hours_this_week <= ov_week_limit)
+                    {
+                        divide_day = true;
+                        hour_new_overtime = false;
+                    }
+                    wxDateTime first_time = first;
+                    wxDateTime second_time = start_date;
+
+                    if(divide_day)
+                    {
+                        double t_p_normal = (diff - brea_time)*wage;
+                        wxTimeSpan ov_diff(0,0,((diff - brea_time)*3600),0);
+                        second_time = first_time;
+                        write_row(n, first_time.FormatTime(),second_time.Add(ov_diff).FormatTime(), jobInf.Name,(diff - brea_time), wage, t_p_normal, colour);
+                        toPayTotal += round_2(t_p_normal);
+                        regHoursTotal += round_2(diff - brea_time);
+                        n++;
+
+                        double t_p = brea_time*ov_wage*wage;
+                        wxTimeSpan ov_diff2(0,0,((brea_time)*3600),0);
+                        wxDateTime third_time = second_time;
+                        write_row(n, second_time.FormatTime(),third_time.Add(ov_diff2).FormatTime(), jobInf.Name, brea_time, (wage*ov_wage), t_p, colour);
+                        toPayOvertime += round_2(t_p);
+                        overtimeHoursTotal += round_2(brea_time);
+                        Grid1->SetRowLabelValue(n, _T(""));
+                        dates_ceros.Add(0);
+                        Grid1->SetCellBackgroundColour(n,5,*wxRED);
+                        n++;
+                    }
+                    else
+                    {
+                        double t_p = diff*ov_wage*wage;
+                        write_row(n, first_time.FormatTime(),second_time.FormatTime(), jobInf.Name, diff, (wage*ov_wage), t_p, colour);
+                        toPayOvertime += round_2(t_p);
+                        overtimeHoursTotal += round_2(diff);
+                        Grid1->SetCellBackgroundColour(n,5,*wxRED);
+                        n++;
+                    }
+
+                }
 
 
+            }
         }
+        j++; //adding first difference and increasing position in differArr
+
     }
-j++; //adding first difference and increasing position in differArr
-
-        }
 
 
-wxString temp;
-temp << regHoursTotal;
-Grid2->SetCellValue(0,0,temp);
-temp.Clear();
-temp << overtimeHoursTotal;
-Grid2->SetCellValue(1,0,temp);
-temp.Clear();
-temp << (regHoursTotal + overtimeHoursTotal);
-Grid2->SetCellValue(2,0,temp);
-temp.Clear();
-temp << toPayTotal;
-Grid2->SetCellValue(0,1,temp);
-temp.Clear();
-temp << toPayOvertime;
-Grid2->SetCellValue(1,1,temp);
-temp.Clear();
-temp << (toPayTotal + toPayOvertime);
-Grid2->SetCellValue(2,1,temp);
+    wxString temp;
+    temp << regHoursTotal;
+    Grid2->SetCellValue(0,0,temp);
+    temp.Clear();
+    temp << overtimeHoursTotal;
+    Grid2->SetCellValue(1,0,temp);
+    temp.Clear();
+    temp << (regHoursTotal + overtimeHoursTotal);
+    Grid2->SetCellValue(2,0,temp);
+    temp.Clear();
+    temp << toPayTotal;
+    Grid2->SetCellValue(0,1,temp);
+    temp.Clear();
+    temp << toPayOvertime;
+    Grid2->SetCellValue(1,1,temp);
+    temp.Clear();
+    temp << (toPayTotal + toPayOvertime);
+    Grid2->SetCellValue(2,1,temp);
 
 }
 
-jobInfo etmmanagerFrame::getJob(int jobId){
+jobInfo etmmanagerFrame::getJob(int jobId)
+{
     jobInfo jobInf;
     jobInf.Wage = 0;
     jobInf.Name = _("OFF");
     mysqlpp::Query query = conn->query();
     query << "SELECT * FROM `jobs` WHERE `job_id`='"<< jobId <<"' LIMIT 1";
     mysqlpp::StoreQueryResult res = query.store();
-if(res){
-    mysqlpp::Row row = res.at(0);
-if(jobId != 0){
-    jobInf.Wage = double(row["job_wage"]);
-    jobInf.Name = std2wx(std::string(row["job_title"]), wxConvUI);
+    if(res)
+    {
+        mysqlpp::Row row = res.at(0);
+        if(jobId != 0)
+        {
+            jobInf.Wage = double(row["job_wage"]);
+            jobInf.Name = std2wx(std::string(row["job_title"]), wxConvUI);
+        }
     }
-}
     return jobInf;
-    }
+}
 
-void etmmanagerFrame::write_row(int n, wxString first_t, wxString second_t, wxString& job_n, double diff, double wage, double to_pay, bool colour){
+void etmmanagerFrame::write_row(int n, wxString first_t, wxString second_t, wxString& job_n, double diff, double wage, double to_pay, bool colour)
+{
     if(n>19) Grid1->AppendRows(1);
     Grid1->SetCellValue(n, 0, first_t);
     Grid1->SetCellValue(n, 1, second_t);
     Grid1->SetCellValue(n, 2, job_n);
-    wxString temp; temp << round_2(diff);
+    wxString temp;
+    temp << round_2(diff);
     Grid1->SetCellValue(n, 3, temp);
     temp.Clear();
     temp << wage;
@@ -814,116 +872,138 @@ void etmmanagerFrame::write_row(int n, wxString first_t, wxString second_t, wxSt
     temp.Clear();
     temp << round_2(to_pay);
     Grid1->SetCellValue(n,5, temp);
- if(colour){
- wxColor colotemp = *wxLIGHT_GREY;
- for(int i=0; i<6; i++){
+    if(colour)
+    {
+        wxColor colotemp = *wxLIGHT_GREY;
+        for(int i=0; i<6; i++)
+        {
 
- Grid1->SetCellBackgroundColour(n,i, colotemp);
-     }
-     }
+            Grid1->SetCellBackgroundColour(n,i, colotemp);
         }
-void etmmanagerFrame::writeEmptyRow(int n){
+    }
+}
+void etmmanagerFrame::writeEmptyRow(int n)
+{
     if(n>19) Grid1->AppendRows(1);
-        dates_ceros.Add(1);
-        Grid1->SetCellSize(n,0,1,6);
-        Grid1->SetCellAlignment(n, 0, wxALIGN_CENTRE, wxALIGN_CENTRE);
-        Grid1->SetCellValue(n,0,_("no entry"));
-        Grid1->SetCellBackgroundColour(n,0,*wxCYAN);
-    }
+    dates_ceros.Add(1);
+    Grid1->SetCellSize(n,0,1,6);
+    Grid1->SetCellAlignment(n, 0, wxALIGN_CENTRE, wxALIGN_CENTRE);
+    Grid1->SetCellValue(n,0,_("no entry"));
+    Grid1->SetCellBackgroundColour(n,0,*wxCYAN);
+}
 
-void etmmanagerFrame::read_settings(){
-set_now.mysqlBin = config->Read(_T("/program/mysqldir"));
-if(config->Read(_T("/program/usebin"))==_T("1"))
-    set_now.useBin = true;
+void etmmanagerFrame::read_settings()
+{
+    set_now.mysqlBin = config->Read(_T("/program/mysqldir"));
+    if(config->Read(_T("/program/usebin"))==_T("1"))
+        set_now.useBin = true;
     else
-    set_now.useBin = false;
-    }
+        set_now.useBin = false;
+}
 
 
 
 void etmmanagerFrame::OnGrid1LabelLeftDClick(wxGridEvent& event)
 {
-    if(dates.GetCount() != 0){
-int row = event.GetRow();
+    if(dates.GetCount() != 0)
+    {
+        int row = event.GetRow();
 
-int j = 0;
-for(int i=0; i <= row; i++){
-if(dates_ceros[i] == 1) j++;
+        int j = 0;
+        for(int i=0; i <= row; i++)
+        {
+            if(dates_ceros[i] == 1) j++;
         }
 //wxMessageBox(dates[j-1]);
-edit_time* edit_dlg = new edit_time(this);
-edit_dlg -> conn = conn;
-edit_dlg -> fill_all(dates[j-1], workers_ids[Choice1->GetSelection()]);
-edit_dlg -> ShowModal();
+        edit_time* edit_dlg = new edit_time(this);
+        edit_dlg -> conn = conn;
+        edit_dlg -> fill_all(dates[j-1], workers_ids[Choice1->GetSelection()]);
+        edit_dlg -> ShowModal();
     }
 }
 
-void etmmanagerFrame::clearGridLabels(){
-for(int i=0; i<20; i++){
-    Grid1->SetRowLabelValue(i, _T(""));
+void etmmanagerFrame::clearGridLabels()
+{
+    for(int i=0; i<20; i++)
+    {
+        Grid1->SetRowLabelValue(i, _T(""));
     }
-    }
-void etmmanagerFrame::myClearGrid(){
+}
+void etmmanagerFrame::myClearGrid()
+{
     Grid1->ClearGrid();
     clearGridLabels();
-for(int i=0; i<20; i++){
-    for(int j=0; j<6; j++){
-        Grid1->SetCellBackgroundColour(i,j,*wxWHITE);
-        Grid1->SetCellSize(i,j,1,1);
+    for(int i=0; i<20; i++)
+    {
+        for(int j=0; j<6; j++)
+        {
+            Grid1->SetCellBackgroundColour(i,j,*wxWHITE);
+            Grid1->SetCellSize(i,j,1,1);
         }
     }
     Grid1->DeleteRows(20, Grid1->GetNumberRows()-20);
     Grid1->Refresh();
-    }
+}
 
 void etmmanagerFrame::OnMakeBackupMenu(wxCommandEvent& event)
 {
     //make backup
-        if(dbase_connected){
-    wxFileDialog* save_file_dlg = new wxFileDialog(this, _("Select file"), wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_DEFAULT_STYLE|wxFD_SAVE, wxDefaultPosition, wxDefaultSize, _T("wxFileDialog"));
-    save_file_dlg -> ShowModal();
-    if(save_file_dlg->GetFilename() != _("")){
+    if(dbase_connected)
+    {
+        wxFileDialog* save_file_dlg = new wxFileDialog(this, _("Select file"), wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_DEFAULT_STYLE|wxFD_SAVE, wxDefaultPosition, wxDefaultSize, _T("wxFileDialog"));
+        save_file_dlg -> ShowModal();
+        if(save_file_dlg->GetFilename() != _(""))
+        {
 //    wxString result;
-   int result = makeDump(conn, save_file_dlg -> GetPath());
-if(result == 0) wxMessageBox(_("There was a problem. Backup is not done."));
-    }
-        }else{
-     wxMessageBox(_("You are not connected to the database!"));
+            int result = makeDump(conn, save_file_dlg -> GetPath());
+            if(result == 0) wxMessageBox(_("There was a problem. Backup is not done."));
         }
+    }
+    else
+    {
+        wxMessageBox(_("You are not connected to the database!"));
+    }
 }
 
 void etmmanagerFrame::OnRestoreFromBackupMenu(wxCommandEvent& event)
 {
     //rstore from backup
-    if(dbase_connected){
-    wxFileDialog* open_file_dlg = new wxFileDialog(this, _("Select file"), wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_DEFAULT_STYLE|wxFD_OPEN, wxDefaultPosition, wxDefaultSize, _T("wxFileDialog"));
-    open_file_dlg -> ShowModal();
-        if(open_file_dlg->GetFilename() != _("")){
-   // wxString result;
-    int result = restoreFromDump(conn, open_file_dlg -> GetPath());
-if(result == 0) wxMessageBox(_("There was a problem. Data is not restored."));
+    if(dbase_connected)
+    {
+        wxFileDialog* open_file_dlg = new wxFileDialog(this, _("Select file"), wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_DEFAULT_STYLE|wxFD_OPEN, wxDefaultPosition, wxDefaultSize, _T("wxFileDialog"));
+        open_file_dlg -> ShowModal();
+        if(open_file_dlg->GetFilename() != _(""))
+        {
+            // wxString result;
+            int result = restoreFromDump(conn, open_file_dlg -> GetPath());
+            if(result == 0) wxMessageBox(_("There was a problem. Data is not restored."));
         }
-    }else{
-     wxMessageBox(_("You are not connected to the database!"));
-        }
+    }
+    else
+    {
+        wxMessageBox(_("You are not connected to the database!"));
+    }
 }
 
 void etmmanagerFrame::OnInstallStructureMenu(wxCommandEvent& event)
 {
 
-    if(dbase_connected){
+    if(dbase_connected)
+    {
 
- //   int result = restore_table(host, user, pass, dbase, _("table_schema.sql"));
-         wxStandardPaths path;
-wxFileName tableName;
-tableName.Assign(path.GetDataDir(),_T("table_schema.sql"));
-   int result = restoreFromDump(conn, tableName.GetFullPath());
+//   int result = restore_table(host, user, pass, dbase, _("table_schema.sql"));
+        wxStandardPaths path;
+        wxFileName tableName;
+        tableName.Assign(path.GetDataDir(),_T("table_schema.sql"));
+        int result = restoreFromDump(conn, tableName.GetFullPath());
 
-if(result == 0) wxMessageBox(_("There was a problem. Database structure is not installed"));
+        if(result == 0) wxMessageBox(_("There was a problem. Database structure is not installed"));
 
-    }else{
-     wxMessageBox(_("You are not connected to the database!"));
-        }
+    }
+    else
+    {
+        wxMessageBox(_("You are not connected to the database!"));
+    }
 }
 
 void etmmanagerFrame::OnEditLimits(wxCommandEvent& event)
@@ -935,16 +1015,20 @@ void etmmanagerFrame::OnEditLimits(wxCommandEvent& event)
     refresh_workers();
 }
 
-bool etmmanagerFrame::printTable(wxString& htmlTable){
+bool etmmanagerFrame::printTable(wxString& htmlTable)
+{
 
     wxHtmlEasyPrinting* print = new wxHtmlEasyPrinting();
-if(print->PrintText( htmlTable )){
-return 1;
-}else
-return 0;
+    if(print->PrintText( htmlTable ))
+    {
+        return 1;
+    }
+    else
+        return 0;
 }
 
-void etmmanagerFrame::checkUpdateDB(){
+void etmmanagerFrame::checkUpdateDB()
+{
     bool message = false;
     //checking for 0.5.0 database
     mysqlpp::Query query = conn -> query();
@@ -952,8 +1036,9 @@ void etmmanagerFrame::checkUpdateDB(){
     mysqlpp::StoreQueryResult res = query.store();
     if (res)
     {
-        if( res.num_rows() == 4){ //that means we have old database version - we need to add new tables:
-query << "CREATE TABLE IF NOT EXISTS `contracts` (\
+        if( res.num_rows() == 4)  //that means we have old database version - we need to add new tables:
+        {
+            query << "CREATE TABLE IF NOT EXISTS `contracts` (\
   `id` int(11) NOT NULL auto_increment,\
   `week_starts` int(11) NOT NULL,\
   `day_limit` float NOT NULL,\
@@ -962,78 +1047,89 @@ query << "CREATE TABLE IF NOT EXISTS `contracts` (\
   `default` tinyint(1) NOT NULL default '0',\
   PRIMARY KEY  (`id`)\
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1";
-query.execute();
+            query.execute();
 
 
-query << "INSERT INTO `contracts` (`id`, `week_starts`, `day_limit`, `week_limit`, `multiplier`, `default`) VALUES (1, 0, 12, 40, 1.5, 1)";
-query.execute();
+            query << "INSERT INTO `contracts` (`id`, `week_starts`, `day_limit`, `week_limit`, `multiplier`, `default`) VALUES (1, 0, 12, 40, 1.5, 1)";
+            query.execute();
 
-query << "ALTER TABLE `employees` ADD `contract_id` INT NOT NULL DEFAULT '0' AFTER `emp_ssn`";
-query.execute();
+            query << "ALTER TABLE `employees` ADD `contract_id` INT NOT NULL DEFAULT '0' AFTER `emp_ssn`";
+            query.execute();
 
-message = true;
+            message = true;
         }
 
-        }
- //checking for 0.6.1 database
+    }
+//checking for 0.6.1 database
     query << "SELECT * FROM `employees` LIMIT 1";
     res = query.store();
 
-    if(res){
-    if(res.field_names()->size() == 5){
-        query << "ALTER TABLE `employees` ADD `photo` longblob NOT NULL AFTER `emp_comment`";
-        query.execute();
-message = true;
+    if(res)
+    {
+        if(res.field_names()->size() == 5)
+        {
+            query << "ALTER TABLE `employees` ADD `photo` longblob NOT NULL AFTER `emp_comment`";
+            query.execute();
+            message = true;
+        }
     }
+    if(message)
+    {
+        wxMessageBox(_("Database was updated!"));
     }
-    if(message){
-    wxMessageBox(_("Database was updated!"));
-    }
-    }
+}
 
-void etmmanagerFrame::OnButton2Click1(wxCommandEvent& event){
+void etmmanagerFrame::OnButton2Click1(wxCommandEvent& event)
+{
     wxDateTime start_date = DatePickerCtrl1->GetValue();
     wxDateTime end_date = DatePickerCtrl2->GetValue();
 
-wxString htmlTable;
+    wxString htmlTable;
 
-htmlTable << _("Employee: ") <<  Choice1 -> GetStringSelection() << _T("<br>Start date: ") \
-<< start_date.FormatDate() << _T("<br>End date: ") << end_date.FormatDate();
-htmlTable << _T("<br><br><table border=0 cellpadding=3 bgcolor=#000000><th bgcolor=white></th>");
-
-
-for(int h=0; h<6; ++h){
-    htmlTable << _T("<th bgcolor=white>") << Grid1->GetColLabelValue(h) << _T("</th>");
-}
+    htmlTable << _("Employee: ") <<  Choice1 -> GetStringSelection() << _T("<br>Start date: ") \
+    << start_date.FormatDate() << _T("<br>End date: ") << end_date.FormatDate();
+    htmlTable << _T("<br><br><table border=0 cellpadding=3 bgcolor=#000000><th bgcolor=white></th>");
 
 
-int i = 0;
-    for(i; i < Grid1->GetNumberRows(); ++i){
-        if(Grid1->GetCellValue(i,0) == _T(""))
-                            break;
+    for(int h=0; h<6; ++h)
+    {
+        htmlTable << _T("<th bgcolor=white>") << Grid1->GetColLabelValue(h) << _T("</th>");
     }
 
-for(int j=0; j < i; ++j){
-    htmlTable << _T("<tr>");
-    htmlTable << _T("<td bgcolor=white>") << Grid1->GetRowLabelValue(j) << _T("</td>");
 
-    int cell_w;
-    int cell_h;
-    Grid1->GetCellSize(j,0,&cell_h,&cell_w);
+    int i = 0;
+    for(i; i < Grid1->GetNumberRows(); ++i)
+    {
+        if(Grid1->GetCellValue(i,0) == _T(""))
+            break;
+    }
 
-if(cell_w != 6){
-for(int k=0; k < 6; ++k){
-    htmlTable << _T("<td bgcolor=")<< Grid1->GetCellBackgroundColour(j,k).GetAsString(wxC2S_HTML_SYNTAX) <<_T(">") << Grid1->GetCellValue(j,k) << _T("</td>");
-}
-}else{
-    htmlTable << _T("<td colspan = 6 align = center bgcolor=")<< Grid1->GetCellBackgroundColour(j,0).GetAsString(wxC2S_HTML_SYNTAX) <<_T(">")<< Grid1->GetCellValue(j,0) << _T("</td>");
-}
+    for(int j=0; j < i; ++j)
+    {
+        htmlTable << _T("<tr>");
+        htmlTable << _T("<td bgcolor=white>") << Grid1->GetRowLabelValue(j) << _T("</td>");
 
-    htmlTable << _T("</tr>");
-}
+        int cell_w;
+        int cell_h;
+        Grid1->GetCellSize(j,0,&cell_h,&cell_w);
 
-htmlTable << _T("</table>");
+        if(cell_w != 6)
+        {
+            for(int k=0; k < 6; ++k)
+            {
+                htmlTable << _T("<td bgcolor=")<< Grid1->GetCellBackgroundColour(j,k).GetAsString(wxC2S_HTML_SYNTAX) <<_T(">") << Grid1->GetCellValue(j,k) << _T("</td>");
+            }
+        }
+        else
+        {
+            htmlTable << _T("<td colspan = 6 align = center bgcolor=")<< Grid1->GetCellBackgroundColour(j,0).GetAsString(wxC2S_HTML_SYNTAX) <<_T(">")<< Grid1->GetCellValue(j,0) << _T("</td>");
+        }
 
-printTable(htmlTable);
+        htmlTable << _T("</tr>");
+    }
+
+    htmlTable << _T("</table>");
+
+    printTable(htmlTable);
 
 }

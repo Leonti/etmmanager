@@ -125,9 +125,9 @@ etmmanagerFrame::etmmanagerFrame(wxWindow* parent,wxWindowID id)
     Create(parent, wxID_ANY, _("ETM manager"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
     SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_MENU));
     {
-        wxIcon FrameIcon;
-        FrameIcon.CopyFromBitmap(wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_NORMAL_FILE")),wxART_FRAME_ICON));
-        SetIcon(FrameIcon);
+    	wxIcon FrameIcon;
+    	FrameIcon.CopyFromBitmap(wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_NORMAL_FILE")),wxART_FRAME_ICON));
+    	SetIcon(FrameIcon);
     }
     FlexGridSizer1 = new wxFlexGridSizer(0, 2, 0, 0);
     FlexGridSizer2 = new wxFlexGridSizer(4, 1, 0, 0);
@@ -681,6 +681,12 @@ void etmmanagerFrame::OnButton1Click(wxCommandEvent& event)
     bool same_day = true;
     wxString day_label;
 
+//testing
+        double hours_this_day = 0;  //reseting hours for today
+        bool hour_new_overtime = true;
+        bool day_divided = false; //if day is divided by day overtimes
+//Note: it can be only one weekly day division and one dayly
+
     while(start_date < end_date)   //doing it again but this time filling the grid
     {
 //bool first_label = true;
@@ -689,12 +695,10 @@ void etmmanagerFrame::OnButton1Click(wxCommandEvent& event)
         {
             hours_this_week = 0;
             day_new_overtime = true;
+
         }
-        double hours_this_day = 0;  //reseting hours for today
-        bool hour_new_overtime = true;
-
-
-
+//        double hours_this_day = 0;  //reseting hours for today
+ //       bool hour_new_overtime = true;
 
 
         wxDateTime first = start_date;       //we could do it all first time but it's already complicated as it is ;)
@@ -702,10 +706,15 @@ void etmmanagerFrame::OnButton1Click(wxCommandEvent& event)
         if(start_date.FormatISODate() == first.FormatISODate())
         {
             same_day = true;
+    //         hour_new_overtime = true;
         }
         else
         {
             same_day = false;
+  //          double hours_this_day = 0;  //reseting hours for today
+ //  hour_new_overtime = false;
+hours_this_day = 0;
+day_divided = false;
         }
 
         if(diffesArr[j].isEmpty && diffesArr[j].job_id == 0)  //this means the whole day was day off
@@ -752,30 +761,39 @@ void etmmanagerFrame::OnButton1Click(wxCommandEvent& event)
                 {
 
                     double brea_time;
+
+                    //uncomment me!!!
+
                     if(hours_this_week > ov_week_limit)
                     {
                         brea_time = hours_this_week - ov_week_limit;
+
                     }
-                    else
+                    else if(hours_this_day > ov_day_limit) //this line is for testing purposes only
                     {
                         brea_time = hours_this_day - ov_day_limit;
+
                     }
 
                     bool divide_day = false;
+
+
+//uncomment me!!!
                     if(day_new_overtime && hours_this_week > ov_week_limit)
                     {
                         divide_day = true;
                         day_new_overtime = false;
                     }
-                    else if(hour_new_overtime && hours_this_day > ov_day_limit && hours_this_week <= ov_week_limit)
+                    else if(hour_new_overtime && hours_this_day > ov_day_limit  && hours_this_week <= ov_week_limit)
                     {
                         divide_day = true;
-                        hour_new_overtime = false;
+                      //  hour_new_overtime = true; //test - makes no difference
                     }
+
                     wxDateTime first_time = first;
                     wxDateTime second_time = start_date;
 
-                    if(divide_day)
+                    if(divide_day & !day_divided)
                     {
                         double t_p_normal = (diff - brea_time)*wage;
                         wxTimeSpan ov_diff(0,0,((diff - brea_time)*3600),0);
@@ -795,6 +813,7 @@ void etmmanagerFrame::OnButton1Click(wxCommandEvent& event)
                         dates_ceros.Add(0);
                         Grid1->SetCellBackgroundColour(n,5,*wxRED);
                         n++;
+                        day_divided = true;
                     }
                     else
                     {
@@ -915,10 +934,13 @@ void etmmanagerFrame::OnGrid1LabelLeftDClick(wxGridEvent& event)
             if(dates_ceros[i] == 1) j++;
         }
 //wxMessageBox(dates[j-1]);
+
+
         edit_time* edit_dlg = new edit_time(this);
         edit_dlg -> conn = conn;
         edit_dlg -> fill_all(dates[j-1], workers_ids[Choice1->GetSelection()]);
         edit_dlg -> ShowModal();
+
     }
 }
 

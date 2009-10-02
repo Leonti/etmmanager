@@ -52,6 +52,10 @@ edit_time::edit_time(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxS
     FlexGridSizer1->Add(StaticText1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     Grid1 = new wxGrid(this, ID_GRID1, wxDefaultPosition, wxDefaultSize, 0, _T("ID_GRID1"));
     Grid1->CreateGrid(2,2);
+    Grid1->EnableEditing(true);
+    Grid1->EnableGridLines(true);
+    Grid1->SetDefaultCellFont( Grid1->GetFont() );
+    Grid1->SetDefaultCellTextColour( Grid1->GetForegroundColour() );
     FlexGridSizer1->Add(Grid1, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer2 = new wxFlexGridSizer(0, 2, 0, 0);
     Button1 = new wxButton(this, ID_BUTTON1, _("Add"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
@@ -108,13 +112,13 @@ void edit_time::fill_all(wxString& date, int emp_id)
     job_names.Add(_T(""), 2);
     time_ids.Add(0, 2);
 
-    if(res)
+    if(res_job)
     {
         mysqlpp::Row row;
         mysqlpp::StoreQueryResult::size_type i;
-        for (i = 0; i < res.num_rows(); ++i)
+        for (i = 0; i < res_job.num_rows(); ++i)
         {
-            row = res[i];
+            row = res_job[i];
             jobs.Add(std2wx(std::string(row["job_title"]),wxConvUI));
             job_ids.Add(int(row["job_id"]));
         }

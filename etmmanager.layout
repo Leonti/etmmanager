@@ -7,7 +7,7 @@
 	<File name="src/about.h" open="0" top="0" tabpos="15">
 		<Cursor position="1652" topLine="0" />
 	</File>
-	<File name="src/backup.cpp" open="1" top="1" tabpos="1">
+	<File name="src/backup.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="534" topLine="94" />
 	</File>
 	<File name="src/backup.h" open="0" top="0" tabpos="5">
@@ -26,7 +26,7 @@
 		<Cursor position="1652" topLine="0" />
 	</File>
 	<File name="src/edit_time.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="0" topLine="0" />
+		<Cursor position="6174" topLine="108" />
 	</File>
 	<File name="src/edit_time.h" open="0" top="0" tabpos="17">
 		<Cursor position="1652" topLine="0" />
@@ -37,8 +37,8 @@
 	<File name="src/etmmanagerApp.h" open="0" top="0" tabpos="18">
 		<Cursor position="1652" topLine="0" />
 	</File>
-	<File name="src/etmmanagerMain.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="19580" topLine="382" />
+	<File name="src/etmmanagerMain.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="33306" topLine="761" />
 	</File>
 	<File name="src/etmmanagerMain.h" open="0" top="0" tabpos="2">
 		<Cursor position="6714" topLine="191" />

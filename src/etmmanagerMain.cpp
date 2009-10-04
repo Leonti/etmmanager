@@ -1152,6 +1152,27 @@ void etmmanagerFrame::OnButton2Click1(wxCommandEvent& event)
 
     htmlTable << _T("</table>");
 
+    htmlTable << _T("<br><br><table border=0 cellpadding=3 bgcolor=#000000><th bgcolor=white></th>");
+
+
+    for(int h=0; h<2; ++h)
+    {
+        htmlTable << _T("<th bgcolor=white>") << Grid2->GetColLabelValue(h) << _T("</th>");
+    }
+
+    for(int j=0; j < 3; ++j)
+    {
+        htmlTable << _T("<tr>");
+        htmlTable << _T("<td bgcolor=white>") << Grid2->GetRowLabelValue(j) << _T("</td>");
+
+             for(int k=0; k < 2; ++k)
+            {
+                htmlTable << _T("<td bgcolor=")<< Grid2->GetCellBackgroundColour(j,k).GetAsString(wxC2S_HTML_SYNTAX) <<_T(">") << Grid2->GetCellValue(j,k) << _T("</td>");
+            }
+           htmlTable << _T("</tr>");
+    }
+    htmlTable << _T("</table>");
+
     printTable(htmlTable);
 
 }

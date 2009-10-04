@@ -38,7 +38,7 @@
 		<Cursor position="1652" topLine="0" />
 	</File>
 	<File name="src/etmmanagerMain.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="33306" topLine="761" />
+		<Cursor position="44292" topLine="1113" />
 	</File>
 	<File name="src/etmmanagerMain.h" open="0" top="0" tabpos="2">
 		<Cursor position="6714" topLine="191" />
@@ -62,7 +62,7 @@
 		<Cursor position="1652" topLine="0" />
 	</File>
 	<File name="src/settings.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1652" topLine="0" />
+		<Cursor position="1652" topLine="85" />
 	</File>
 	<File name="src/settings.h" open="0" top="0" tabpos="7">
 		<Cursor position="1652" topLine="0" />

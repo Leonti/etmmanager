@@ -17,6 +17,9 @@
 *  along with this program; if not, write to the Free Software                       *
 *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA    *
 *************************************************************************************/
+#ifndef BACKUP_H
+#define BACKUP_H
+#include <wx/msgdlg.h>
 #include <wx/utils.h>
 #include <wx/string.h>
 #include <wx/ffile.h>
@@ -28,7 +31,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <wx/msgdlg.h>
+
 #include <wx/stdpaths.h>
 
 long make_dump(const wxString& host,const  wxString& user, const wxString& password, const wxString& db_name, const wxString& filename);
@@ -38,3 +41,4 @@ int restoreFromDump(mysqlpp::Connection*, const wxString& filename);
 std::string string2hexString(const char* data, const int datasize);
 
 //std::string char_to_hex( const char* _pArray, int _len );
+#endif
